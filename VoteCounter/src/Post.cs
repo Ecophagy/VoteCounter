@@ -43,7 +43,6 @@ namespace VoteCounter
 
         private string ExtractPostContent(HtmlNode node)
         {
-            //TODO: Remove quotes
             try
             {
                 var quotes = node.SelectNodes(".//blockquote[@class='source-quote']").ToList();
