@@ -43,6 +43,21 @@ namespace VoteCounter
 
         private string ExtractPostContent(HtmlNode node)
         {
+            //TODO: Remove quotes
+            try
+            {
+                var quotes = node.SelectNodes(".//blockquote[@class='source-quote']").ToList();
+
+                foreach (HtmlNode quote in quotes)
+                {
+                    quote.Remove();
+                }
+            }
+            catch(ArgumentNullException)
+            {
+                //Do nothing (there were no quotes found)
+            }
+  
             return node.SelectSingleNode(".//div[@class='j-comment-body-container p-comment-body forum-post-body-content']").InnerHtml;
         }
     }
