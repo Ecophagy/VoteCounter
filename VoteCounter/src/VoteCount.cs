@@ -8,11 +8,11 @@ namespace VoteCounter
 {
     class VoteCount
     {
-        public System.Collections.Concurrent.ConcurrentDictionary<string, string> voteCount { get; set; }
+        public System.Collections.Specialized.OrderedDictionary voteCount { get; set; }
 
         public VoteCount()
         {
-            voteCount = new System.Collections.Concurrent.ConcurrentDictionary<string, string>();
+            voteCount = new System.Collections.Specialized.OrderedDictionary();
         }
 
         public void FindVotes(List<Post> PostList)
@@ -26,7 +26,12 @@ namespace VoteCounter
                                         System.Text.RegularExpressions.RegexOptions.IgnoreCase);
                 if (match.Success)
                 {
-                    voteCount.AddOrUpdate(post.poster, match.Groups[1].Value, (k, v) => match.Groups[1].Value);
+                    //Is the poster already voting? If they are, remove their vote
+                    if(voteCount.Contains(post.poster))
+                    {
+                        voteCount.Remove(post.poster);
+                    }
+                    voteCount.Add(post.poster, match.Groups[1].Value);
                 }
             }
         }

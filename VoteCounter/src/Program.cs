@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 using System.Globalization;
+using System.Collections;
 
 namespace VoteCounter
 {
@@ -30,7 +31,7 @@ namespace VoteCounter
             voteCount.FindVotes(PostList);
 
             //Print out the votecount!
-            foreach (KeyValuePair<string, string> kvp in voteCount.voteCount)
+            foreach (DictionaryEntry kvp in voteCount.voteCount)
             {
                 Console.WriteLine("{0} is voting {1}", kvp.Key, kvp.Value);
             }
