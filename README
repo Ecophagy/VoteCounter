@@ -1,3 +1,19 @@
 MTGS Mafia Votecounter. Parses a thread and tallies votes. WIP.
 
 Also included are some HTML samples, one of a single post, one of an entire thread page.
+
+TODO:
+-Unvote Support (How to handle votes and unvotes in the same post?)
+-Playerlist & Vote validity checks
+-Convert Vote list into Vote Count
+-Ingest multiple thread pages
+-Page/Post start point
+-UI
+
+Future TODOs:
+-When did everyone last post?
+-Tally posts made by player each day
+-Read for "@MOD" requests
+-Player nicknames (to allow more flexibility when voting)
+-Save previous votecount & continue from it
+-Votecount formatting options.
