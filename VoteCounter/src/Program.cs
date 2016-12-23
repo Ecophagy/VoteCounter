@@ -26,9 +26,18 @@ namespace VoteCounter
             voteCount.FindVotes(postList.ListOfPosts);
 
             //Print out the votecount!
-            foreach (DictionaryEntry kvp in voteCount.voteCount)
+            foreach (KeyValuePair<string, List<string>> kvp in voteCount.createVotecount())
             {
-                Console.WriteLine("{0} is voting {1}", kvp.Key, kvp.Value);
+                Console.Write("{0} - {1} (", kvp.Key, kvp.Value.Count);
+                foreach(string voter in kvp.Value)
+                {
+                    Console.Write("{0}", voter);
+                    if(kvp.Value.IndexOf(voter) != kvp.Value.Count -1)
+                    {
+                        Console.Write(", ");
+                    }
+                }
+                Console.WriteLine(")");
             }
         }
     }
