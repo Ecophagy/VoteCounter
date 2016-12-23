@@ -12,25 +12,18 @@ namespace VoteCounter
 {
     class Program
     {
-        private static string URL = "http://www.mtgsalvation.com/forums/forum-games/mafia/762585-unreliable-cops-mafia-game-over-mafia-victory?page=";
+        private static string URL = "http://www.mtgsalvation.com/forums/forum-games/mafia/762585-unreliable-cops-mafia-game-over-mafia-victory";
 
         static void Main(string[] args)
         {
-            int startingPage = 7;
-           // while()
-            var parser = new HtmlParser(URL+startingPage);
-            var nodes = parser.getListofHtmlPosts();
-      
-            //Convert each HTML post construct to a post object and add them to a list
-            List<Post> PostList = new List<Post>();
-            foreach (HtmlNode node in nodes)
-            {
-                PostList.Add(new Post(node));
-            }
+            int startingPostNumber = 200;
+            int endingPostNumber = 238;
+
+            PostList postList = new PostList(URL, startingPostNumber, endingPostNumber);
 
             //For each post, search the text for votes
             var voteCount = new VoteCount();
-            voteCount.FindVotes(PostList);
+            voteCount.FindVotes(postList.ListOfPosts);
 
             //Print out the votecount!
             foreach (DictionaryEntry kvp in voteCount.voteCount)

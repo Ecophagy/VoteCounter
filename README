@@ -5,8 +5,6 @@ Also included are some HTML samples, one of a single post, one of an entire thre
 TODO:
 -Playerlist & Vote validity checks
 -Convert Vote list into Vote Count
--Ingest multiple thread pages
--Page/Post start point
 -UI
 
 Future TODOs:
@@ -21,3 +19,4 @@ Future TODOs:
 ASSUMPTIONS:
 Unvotes stand alone (not "unvote:player X")
 A player cannot vote and then unvote that vote in the same post (we look for unvotes before vote)
+Unvote followed by vote must be in different sets of bold tags

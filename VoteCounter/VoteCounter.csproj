@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="src\HTMLParser.cs" />
     <Compile Include="src\Post.cs" />
+    <Compile Include="src\PostList.cs" />
     <Compile Include="src\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\VoteCount.cs" />
