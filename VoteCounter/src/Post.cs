@@ -33,7 +33,7 @@ namespace VoteCounter
         {
             HtmlNode nd = node.SelectSingleNode(".//span[@itemprop='dateCreated']");
             string dt = node.SelectSingleNode(".//span[@itemprop='dateCreated']").GetAttributeValue("datetime", "");
-            return DateTime.ParseExact(dt, "yyyy-dd-MMTHH:mm:ss", CultureInfo.InvariantCulture);
+            return DateTime.ParseExact(dt, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture);
         }
 
         private string ExtractUserName(HtmlNode node)

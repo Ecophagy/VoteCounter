@@ -12,11 +12,13 @@ namespace VoteCounter
 {
     class Program
     {
-        private static string URL = "http://www.mtgsalvation.com/forums/forum-games/mafia/762585-unreliable-cops-mafia-game-over-mafia-victory";
+        private static string URL = "http://www.mtgsalvation.com/forums/forum-games/mafia/762585-unreliable-cops-mafia-game-over-mafia-victory?page=";
 
         static void Main(string[] args)
         {
-            var parser = new HtmlParser(URL);
+            int startingPage = 7;
+           // while()
+            var parser = new HtmlParser(URL+startingPage);
             var nodes = parser.getListofHtmlPosts();
       
             //Convert each HTML post construct to a post object and add them to a list
