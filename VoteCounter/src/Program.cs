@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using HtmlAgilityPack;
 using System.Globalization;
 using System.Collections;
+using System.Windows.Forms;
 
 namespace VoteCounter
 {
@@ -14,8 +15,14 @@ namespace VoteCounter
     {
         private static string URL = "http://www.mtgsalvation.com/forums/forum-games/mafia/762585-unreliable-cops-mafia-game-over-mafia-victory";
 
-        static void Main(string[] args)
+        static void Main()
         {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new GUI());
+
+
+            /*
             int startingPostNumber = 200;
             int endingPostNumber = 238;
 
@@ -38,7 +45,7 @@ namespace VoteCounter
                     }
                 }
                 Console.WriteLine(")");
-            }
+            }*/
         }
     }
 }
