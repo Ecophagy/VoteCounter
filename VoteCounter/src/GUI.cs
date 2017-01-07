@@ -28,7 +28,7 @@ namespace VoteCounter
             PostList postList = new PostList(url, startingPostNumber, endingPostNumber);
 
             //For each post, search the text for votes
-            var voteCount = new VoteCount();
+            var voteCount = new VoteCount(listPlayers.Lines.ToList());
             voteCount.FindVotes(postList.ListOfPosts);
 
             StringBuilder voteline = new StringBuilder();
@@ -50,6 +50,21 @@ namespace VoteCounter
             }
 
             txtVoteCount.Text = voteline.ToString();
+        }
+
+        private void txtGameUrl_Enter(object sender, EventArgs e)
+        {
+            txtGameUrl.Clear();
+        }
+
+        private void txtStartingPost_Enter(object sender, EventArgs e)
+        {
+            txtStartingPost.Clear();
+        }
+
+        private void txtEndingPost_Enter(object sender, EventArgs e)
+        {
+            txtEndingPost.Clear();
         }
     }
 }

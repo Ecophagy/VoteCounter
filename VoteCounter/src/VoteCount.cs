@@ -11,9 +11,12 @@ namespace VoteCounter
     {
         public System.Collections.Specialized.OrderedDictionary rawVoteCount { get; set; }
 
-        public VoteCount()
+        public List<string> playerList { get; set; }
+
+        public VoteCount(List<string> playerList)
         {
             rawVoteCount = new System.Collections.Specialized.OrderedDictionary();
+            this.playerList = playerList;
         }
 
         public void FindVotes(List<Post> PostList)
@@ -52,15 +55,27 @@ namespace VoteCounter
                                     System.Text.RegularExpressions.RegexOptions.IgnoreCase);
             if (match.Success)
             {
-                //Is the poster already voting? If they are, remove their vote
-                if (rawVoteCount.Contains(post.poster))
+                if (isVoteValid(match.Groups[1].Value))
                 {
-                    rawVoteCount.Remove(post.poster);
+                    //Is the poster already voting? If they are, remove their vote
+                    if (rawVoteCount.Contains(post.poster))
+                    {
+                        rawVoteCount.Remove(post.poster);
+                    }
+                    rawVoteCount.Add(post.poster, match.Groups[1].Value);
                 }
-                rawVoteCount.Add(post.poster, match.Groups[1].Value);
+                else
+                {
+                    Console.WriteLine("Invalid vote in post #" + post.postNumber);
+                }
             }
         }
 
+
+        private bool isVoteValid(string vote)
+        {
+            return playerList.Contains(vote);
+        }
 
         //Create a votecount where key is votee and value is list of players voting for that player
         public SortedDictionary<string, List<string>> createVotecount()
@@ -79,9 +94,37 @@ namespace VoteCounter
                     voteCount[(string)kvp.Value].Add((string)kvp.Key);
                 }
             }
+
+            List<string> notVoting = new List<string>();
+
+            //List Not Voting
+            foreach(string name in playerList)
+            {
+                if(!isPlayerVoting(name, voteCount))
+                {
+                    notVoting.Add(name);
+                }
+            }
+
+            voteCount.Add("Not Voting", notVoting);
+
             //TODO: Sort
-            //TODO: List Not Voting
             return voteCount;
+        }
+
+        private bool isPlayerVoting(string playerName, SortedDictionary<string, List<string>> voteCount)
+        {
+            bool isVoting = false;
+
+            foreach (List<string> voters in voteCount.Values)
+            {
+                if (voters.Contains(playerName))
+                {
+                    isVoting = true;
+                    break;
+                }
+            }
+            return isVoting;
         }
     }
 }
