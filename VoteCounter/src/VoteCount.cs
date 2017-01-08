@@ -100,7 +100,7 @@ namespace VoteCounter
             //List Not Voting
             foreach(string name in playerList)
             {
-                if(!isPlayerVoting(name, voteCount))
+                if (!rawVoteCount.Contains(name))
                 {
                     notVoting.Add(name);
                 }
@@ -110,21 +110,6 @@ namespace VoteCounter
 
             //TODO: Sort
             return voteCount;
-        }
-
-        private bool isPlayerVoting(string playerName, SortedDictionary<string, List<string>> voteCount)
-        {
-            bool isVoting = false;
-
-            foreach (List<string> voters in voteCount.Values)
-            {
-                if (voters.Contains(playerName))
-                {
-                    isVoting = true;
-                    break;
-                }
-            }
-            return isVoting;
         }
     }
 }
