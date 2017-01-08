@@ -2,6 +2,8 @@ MTGS Mafia Votecounter V0.1 (Alpha): Counts votes that occurred between two post
 
 Also included are some HTML samples, one of a single post, one of an entire thread page.
 
+DISCLAIMER: I make no guarantees of votecount accuracy, and I also cannot guarantee that running this program will not cause any kind of damage or harm to your computer or files stored on it. Use with common sense.
+
 
 ASSUMPTIONS:
 Players have exactly 1 vote
