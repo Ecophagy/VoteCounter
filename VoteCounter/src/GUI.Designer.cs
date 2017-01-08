@@ -89,6 +89,7 @@
             this.listPlayers.Location = new System.Drawing.Point(68, 67);
             this.listPlayers.Multiline = true;
             this.listPlayers.Name = "listPlayers";
+            this.listPlayers.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.listPlayers.Size = new System.Drawing.Size(165, 166);
             this.listPlayers.TabIndex = 0;
             // 
