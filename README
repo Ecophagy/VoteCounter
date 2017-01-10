@@ -2,8 +2,7 @@ MTGS Mafia Votecounter V0.1 (Alpha): Counts votes that occurred between two post
 
 Also included are some HTML samples, one of a single post, one of an entire thread page.
 
-DISCLAIMER: I make no guarantees of votecount accuracy, and I also cannot guarantee that running this program will not cause any kind of damage or harm to your computer or files stored on it. Use with common sense.
-
+LICENSE: This project is licensed under the MIT License. Please note that theHTMLAgilityPack library is licensed instead under the Microsoft Public License (Ms-PL) https://htmlagilitypack.codeplex.com/license
 
 ASSUMPTIONS:
 Players have exactly 1 vote
@@ -26,4 +25,3 @@ Future Features:
 -Multivoters (uh oh)
 -Online hosting + web GUI
 -Perhaps use something more distinct than bold tags (like ##VOTE:)
-
