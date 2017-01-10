@@ -22,34 +22,41 @@ namespace VoteCounter
         private void btnGenerateVoteCount_Click(object sender, EventArgs e)
         {
             string url = txtGameUrl.Text;
-            int startingPostNumber = Convert.ToInt32(txtStartingPost.Text);
-            int endingPostNumber = Convert.ToInt32(txtEndingPost.Text);
+            int startingPostNumber;
+            int endingPostNumber;
 
-            PostList postList = new PostList(url, startingPostNumber, endingPostNumber);
-
-            //For each post, search the text for votes
-            var voteCount = new VoteCount(listPlayers.Lines.ToList());
-            voteCount.FindVotes(postList.ListOfPosts);
-
-            StringBuilder voteline = new StringBuilder();
-
-            //Print out the votecount!
-            foreach (KeyValuePair<string, List<string>> kvp in voteCount.createVotecount())
+            if (Int32.TryParse(txtStartingPost.Text, out startingPostNumber) && Int32.TryParse(txtEndingPost.Text, out endingPostNumber))
             {
-                voteline.Append(kvp.Key + " - " + kvp.Value.Count + " (");
+                PostList postList = new PostList(url, startingPostNumber, endingPostNumber);
 
-                foreach (string voter in kvp.Value)
+                //For each post, search the text for votes
+                var voteCount = new VoteCount(listPlayers.Lines.ToList());
+                voteCount.FindVotes(postList.ListOfPosts);
+
+                StringBuilder voteline = new StringBuilder();
+
+                //Print out the votecount!
+                foreach (KeyValuePair<string, List<string>> kvp in voteCount.createVotecount())
                 {
-                    voteline.Append(voter);
-                    if (kvp.Value.IndexOf(voter) != kvp.Value.Count - 1)
-                    {
-                        voteline.Append(", ");
-                    }
-                }
-                voteline.AppendLine(")");
-            }
+                    voteline.Append(kvp.Key + " - " + kvp.Value.Count + " (");
 
-            txtVoteCount.Text = voteline.ToString();
+                    foreach (string voter in kvp.Value)
+                    {
+                        voteline.Append(voter);
+                        if (kvp.Value.IndexOf(voter) != kvp.Value.Count - 1)
+                        {
+                            voteline.Append(", ");
+                        }
+                    }
+                    voteline.AppendLine(")");
+                }
+
+                txtVoteCount.Text = voteline.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Invalid Post Numbers!", "VoteCounter" ,MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void txtGameUrl_Enter(object sender, EventArgs e)
