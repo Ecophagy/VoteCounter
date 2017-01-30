@@ -15,7 +15,7 @@ namespace VoteCounter
         public PostList(String URL, int startingPostNumber, int endingPostNumber)
         {
             ListOfPosts = new List<Post>();
-            int startingPage = (int)Math.Ceiling((decimal)startingPostNumber / 50);
+            int startingPage = (int)Math.Ceiling((decimal)startingPostNumber / 50); //rounds?
             int endingPage = (int)Math.Ceiling((decimal)endingPostNumber / 50);
             for (int i = startingPage; i <= endingPage; i++)
             {
