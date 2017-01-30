@@ -4,12 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
+using System.Globalization;
 
 namespace VoteCounter
 {
     class VoteCount
     {
         public System.Collections.Specialized.OrderedDictionary rawVoteCount { get; set; }
+
+        //will have a number for each player, followed by a List<string> of names players may go by. List can be accessed in Player.
+        public System.Collections.Specialized.OrderedDictionary playerNames { get; set; }        
 
         public List<string> playerList { get; set; }
 
@@ -19,6 +23,8 @@ namespace VoteCounter
             this.playerList = playerList;
         }
 
+        /*parses list, looking for unvotes, then votes*/
+        /*NOTE: I only did this because of similarity between findVotes and FindVotes, for my sanity*/
         public void FindVotes(List<Post> PostList)
         {
             foreach (Post post in PostList)
@@ -27,7 +33,7 @@ namespace VoteCounter
                 findVotes(post);
             }
         }
-
+        /*parses post for unvotes*/
         private void findUnvotes(Post post)
         {
             string pattern = "<strong>unvote</strong>";
@@ -45,7 +51,7 @@ namespace VoteCounter
             }
 
         }
-
+        /*parses post for votes*/
         private void findVotes(Post post)
         {
             string pattern = "<strong>vote:? (.+)</strong>";
@@ -110,6 +116,18 @@ namespace VoteCounter
 
             //TODO: Sort
             return voteCount;
+        }
+
+        //
+        public void populatePlayerNicknameList(List<string> a_playerList)
+        {
+            int playerCounter = 0;
+
+            for(int i = 0; i < a_playerList.Count(); ++i)
+            {
+                Player p = new Player(playerCounter++, a_playerList.ElementAt(i));
+            }
+
         }
     }
 }
