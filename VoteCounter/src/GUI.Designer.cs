@@ -32,7 +32,6 @@
             this.txtStartingPost = new System.Windows.Forms.TextBox();
             this.txtEndingPost = new System.Windows.Forms.TextBox();
             this.btnGenerateVoteCount = new System.Windows.Forms.Button();
-            this.listPlayers = new System.Windows.Forms.TextBox();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.txtVoteCount = new System.Windows.Forms.TextBox();
             this.lblGameUrl = new System.Windows.Forms.Label();
@@ -40,6 +39,10 @@
             this.lblStartPost = new System.Windows.Forms.Label();
             this.lblEndPost = new System.Windows.Forms.Label();
             this.lblVoteCount = new System.Windows.Forms.Label();
+            this.listPlayers = new System.Windows.Forms.DataGridView();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nicknames = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.listPlayers)).BeginInit();
             this.SuspendLayout();
             // 
             // txtGameUrl
@@ -57,7 +60,7 @@
             // 
             // txtStartingPost
             // 
-            this.txtStartingPost.Location = new System.Drawing.Point(283, 91);
+            this.txtStartingPost.Location = new System.Drawing.Point(306, 91);
             this.txtStartingPost.Name = "txtStartingPost";
             this.txtStartingPost.Size = new System.Drawing.Size(100, 20);
             this.txtStartingPost.TabIndex = 1;
@@ -76,22 +79,13 @@
             // btnGenerateVoteCount
             // 
             this.btnGenerateVoteCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.btnGenerateVoteCount.Location = new System.Drawing.Point(260, 156);
+            this.btnGenerateVoteCount.Location = new System.Drawing.Point(306, 156);
             this.btnGenerateVoteCount.Name = "btnGenerateVoteCount";
-            this.btnGenerateVoteCount.Size = new System.Drawing.Size(297, 77);
+            this.btnGenerateVoteCount.Size = new System.Drawing.Size(251, 77);
             this.btnGenerateVoteCount.TabIndex = 3;
             this.btnGenerateVoteCount.Text = "Generate Vote Count!";
             this.btnGenerateVoteCount.UseVisualStyleBackColor = false;
             this.btnGenerateVoteCount.Click += new System.EventHandler(this.btnGenerateVoteCount_Click);
-            // 
-            // listPlayers
-            // 
-            this.listPlayers.Location = new System.Drawing.Point(68, 67);
-            this.listPlayers.Multiline = true;
-            this.listPlayers.Name = "listPlayers";
-            this.listPlayers.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.listPlayers.Size = new System.Drawing.Size(165, 166);
-            this.listPlayers.TabIndex = 0;
             // 
             // splitter1
             // 
@@ -131,7 +125,7 @@
             // lblStartPost
             // 
             this.lblStartPost.AutoSize = true;
-            this.lblStartPost.Location = new System.Drawing.Point(283, 77);
+            this.lblStartPost.Location = new System.Drawing.Point(303, 77);
             this.lblStartPost.Name = "lblStartPost";
             this.lblStartPost.Size = new System.Drawing.Size(63, 13);
             this.lblStartPost.TabIndex = 9;
@@ -155,11 +149,35 @@
             this.lblVoteCount.TabIndex = 11;
             this.lblVoteCount.Text = "Vote Count";
             // 
+            // listPlayers
+            // 
+            this.listPlayers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listPlayers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Name,
+            this.Nicknames});
+            this.listPlayers.Location = new System.Drawing.Point(73, 77);
+            this.listPlayers.Name = "listPlayers";
+            this.listPlayers.RowHeadersVisible = false;
+            this.listPlayers.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.listPlayers.Size = new System.Drawing.Size(201, 155);
+            this.listPlayers.TabIndex = 12;
+            // 
+            // Name
+            // 
+            this.Name.HeaderText = "Names";
+            this.Name.Name = "Name";
+            // 
+            // Nicknames
+            // 
+            this.Nicknames.HeaderText = "Nicknames";
+            this.Nicknames.Name = "Nicknames";
+            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(667, 544);
+            this.Controls.Add(this.listPlayers);
             this.Controls.Add(this.lblVoteCount);
             this.Controls.Add(this.lblEndPost);
             this.Controls.Add(this.lblStartPost);
@@ -167,13 +185,13 @@
             this.Controls.Add(this.lblGameUrl);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.txtVoteCount);
-            this.Controls.Add(this.listPlayers);
             this.Controls.Add(this.btnGenerateVoteCount);
             this.Controls.Add(this.txtEndingPost);
             this.Controls.Add(this.txtStartingPost);
             this.Controls.Add(this.txtGameUrl);
-            this.Name = "GUI";
+            //Name = "GUI";
             this.Text = "GUI";
+            ((System.ComponentModel.ISupportInitialize)(this.listPlayers)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,7 +203,6 @@
         private System.Windows.Forms.TextBox txtStartingPost;
         private System.Windows.Forms.TextBox txtEndingPost;
         private System.Windows.Forms.Button btnGenerateVoteCount;
-        private System.Windows.Forms.TextBox listPlayers;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.TextBox txtVoteCount;
         private System.Windows.Forms.Label lblGameUrl;
@@ -193,5 +210,8 @@
         private System.Windows.Forms.Label lblStartPost;
         private System.Windows.Forms.Label lblEndPost;
         private System.Windows.Forms.Label lblVoteCount;
+        private System.Windows.Forms.DataGridView listPlayers;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nicknames;
     }
 }

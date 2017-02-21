@@ -11,9 +11,15 @@ namespace VoteCounter
     {
         public System.Collections.Specialized.OrderedDictionary rawVoteCount { get; set; }
 
-        public List<string> playerList { get; set; }
+        public List<Player> playerList { get; set; }
 
-        public VoteCount(List<string> playerList)
+        //public VoteCount(List<string> playerList)
+        //{
+        //    rawVoteCount = new System.Collections.Specialized.OrderedDictionary();
+        //    this.playerList = playerList;
+        //}
+
+        public VoteCount(List<Player> playerList)
         {
             rawVoteCount = new System.Collections.Specialized.OrderedDictionary();
             this.playerList = playerList;
@@ -74,7 +80,13 @@ namespace VoteCounter
 
         private bool isVoteValid(string vote)
         {
-            return playerList.Contains(vote);
+            foreach(Player p in playerList)
+            {
+                if (p.mainName.Equals(vote) || p.nicknameList.Contains(vote))
+                    return true;
+            }
+            return false;
+            //return playerList.Contains(vote);
         }
 
         //Create a votecount where key is votee and value is list of players voting for that player
@@ -98,11 +110,11 @@ namespace VoteCounter
             List<string> notVoting = new List<string>();
 
             //List Not Voting
-            foreach(string name in playerList)
+            foreach(Player player in playerList)
             {
-                if (!rawVoteCount.Contains(name))
+                if (!rawVoteCount.Contains(player.mainName))
                 {
-                    notVoting.Add(name);
+                    notVoting.Add(player.mainName);
                 }
             }
 

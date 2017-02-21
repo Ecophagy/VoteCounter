@@ -29,8 +29,50 @@ namespace VoteCounter
             {
                 PostList postList = new PostList(url, startingPostNumber, endingPostNumber);
 
+                //make a List
+                List<Player> players = new List<Player>();
+
+                //set the players
+                foreach (DataGridViewRow row in listPlayers.Rows)
+                {
+                    List<string> nicks = new List<string>();
+                    string name = "";
+                    for (int i = 0; i < listPlayers.Columns.Count; i++)
+                    {
+                        //if under column Names
+                        if (listPlayers.Columns[i].Name.Equals("Name")
+                            && row.Cells[i].Value != null)
+                            name = row.Cells[i].Value.ToString();
+
+                        //if under column Nicknames
+                        if (listPlayers.Columns[i].Name.Equals("Nicknames")
+                            && row.Cells[i].Value != null)
+                        {
+                            if (row.Cells[i].Value.ToString().Length > 0)
+                            {
+                                //parse the string, seperate each name, then put it in the List
+                                string[] words = row.Cells[i].Value.ToString().Split(',');
+                                //then add them
+                                foreach (string s in words)
+                                {
+                                    nicks.Add(s);
+                                }
+                                //its adding a blank to the end, so I'll just remove that manually
+                                if (nicks.Contains(""))
+                                {
+                                    nicks.Remove("");
+                                }
+                            }
+                        }
+                    }
+                   // if (nicks.Count > 0)
+                        players.Add(new Player(name, nicks));
+                   // else
+                       // players.Add(new Player(name));
+                }
+
                 //For each post, search the text for votes
-                var voteCount = new VoteCount(listPlayers.Lines.ToList());
+                var voteCount = new VoteCount(players);
                 voteCount.FindVotes(postList.ListOfPosts);
 
                 StringBuilder voteline = new StringBuilder();
@@ -55,7 +97,7 @@ namespace VoteCounter
             }
             else
             {
-                MessageBox.Show("Invalid Post Numbers!", "VoteCounter" ,MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Invalid Post Numbers!", "VoteCounter", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
