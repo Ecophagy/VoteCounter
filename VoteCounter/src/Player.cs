@@ -43,13 +43,19 @@ namespace VoteCounter
         //assumes no multivoters. 
         public Player(string mainName, List<string> nicknames)
         {
-            Player p = new Player(mainName, 1, nicknames);
+            this.numberOfVotes = 1;
+            this.mainName = mainName;
+            lastPost = new DateTime();
+            nicknameList = nicknames;
         }
         
         //also assumes no multivoters
             public Player(string mainName)
         {
-            Player p = new Player(mainName, 1, new List<string>());
+            this.numberOfVotes = 1;
+            this.mainName = mainName;
+            lastPost = new DateTime();
+            nicknameList = new List<string>();
         }
     }
 }

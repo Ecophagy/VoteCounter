@@ -65,10 +65,8 @@ namespace VoteCounter
                             }
                         }
                     }
-                   // if (nicks.Count > 0)
+                    if (name != "")
                         players.Add(new Player(name, nicks));
-                   // else
-                       // players.Add(new Player(name));
                 }
 
                 //For each post, search the text for votes
