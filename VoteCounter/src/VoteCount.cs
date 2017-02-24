@@ -63,12 +63,40 @@ namespace VoteCounter
             {
                 if (isVoteValid(match.Groups[1].Value))
                 {
+                    
+                    string foundPlayer = new string('a',1);
                     //Is the poster already voting? If they are, remove their vote
                     if (rawVoteCount.Contains(post.poster))
                     {
                         rawVoteCount.Remove(post.poster);
                     }
-                    rawVoteCount.Add(post.poster, match.Groups[1].Value);
+
+                    foreach (Player p in playerList)
+                    {
+                        string toMatch = match.Groups[1].Value;
+                        //check to see if the person the player is voting for is that player's full name
+                        if(String.Compare(p.mainName, toMatch, true) == 0 )
+                        {
+                            foundPlayer = p.mainName;
+                            break;
+                        }
+                        if (p.nicknameList.Count > 0)
+                        {
+                           
+                            for (int i = 0; i < p.nicknameList.Count; i++)
+                            {
+                                //or if it's one of the allowed nicknames
+                                if (String.Compare(p.nicknameList[i], toMatch, true) == 0)
+                                {
+                                    foundPlayer = p.mainName;
+                                    break;
+                                }
+
+                            }
+                        }
+                    }
+                    if(foundPlayer != "")
+                    rawVoteCount.Add(post.poster, foundPlayer);
                 }
                 else
                 {
@@ -82,8 +110,20 @@ namespace VoteCounter
         {
             foreach(Player p in playerList)
             {
-                if (p.mainName.Equals(vote) || p.nicknameList.Contains(vote))
+                //check to see if the player being voted for is on the playerlist
+                if (String.Compare(vote, p.mainName,true) == 0)
                     return true;
+                if (p.nicknameList.Count > 0)
+                {
+                    for (int i = 0; i < p.nicknameList.Count; i++)
+                    {
+                        //or if it has a nickname in the list
+                        bool r = String.Compare(p.nicknameList[i], vote, true) == 0;
+                        string Q = p.nicknameList[i];
+                        if (String.Compare(vote, p.nicknameList[i], true) == 0)
+                            return true;
+                    }
+                }
             }
             return false;
             //return playerList.Contains(vote);
