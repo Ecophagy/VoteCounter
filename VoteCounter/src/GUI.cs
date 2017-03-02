@@ -27,47 +27,53 @@ namespace VoteCounter
 
             if (Int32.TryParse(txtStartingPost.Text, out startingPostNumber) && Int32.TryParse(txtEndingPost.Text, out endingPostNumber))
             {
-                PostList postList = new PostList(url, startingPostNumber, endingPostNumber);
-
                 //make a List
                 List<Player> players = new List<Player>();
 
                 //set the players
                 foreach (DataGridViewRow row in listPlayers.Rows)
                 {
-                    List<string> nicks = new List<string>();
-                    string name = "";
-                    for (int i = 0; i < listPlayers.Columns.Count; i++)
-                    {
-                        //if under column Names
-                        if (listPlayers.Columns[i].Name.Equals("Name")
-                            && row.Cells[i].Value != null)
-                            name = row.Cells[i].Value.ToString();
+                    Player newPlayer = new Player("");
 
-                        //if under column Nicknames
-                        if (listPlayers.Columns[i].Name.Equals("Nicknames")
-                            && row.Cells[i].Value != null)
+                    foreach (DataGridViewColumn column in listPlayers.Columns)
+                    {
+                        if (row.Cells[column.Index].Value != null)
                         {
-                            if (row.Cells[i].Value.ToString().Length > 0)
+                            //if under column Names
+                            if (column.Name.Equals("Name"))
                             {
-                                //parse the string, seperate each name, then put it in the List
-                                string[] words = row.Cells[i].Value.ToString().Split(',');
-                                //then add them
-                                foreach (string s in words)
+                                //if name is valid
+                                if (row.Cells[column.Index].Value.ToString() != ""
+                                    && row.Cells[column.Index].Value != null)
                                 {
-                                    nicks.Add(s);
+                                    newPlayer.mainName = row.Cells[column.Index].Value.ToString();
                                 }
-                                //its adding a blank to the end, so I'll just remove that manually
-                                if (nicks.Contains(""))
+                            }
+                            //if under column Nicknames
+                            else if (column.Name.Equals("Nicknames"))
+                            {
+                                if (row.Cells[column.Index].Value.ToString().Length > 0
+                                    && row.Cells[column.Index].Value != null)
                                 {
-                                    nicks.Remove("");
+                                    //parse the string, seperate each name, then put it in the List
+                                    string[] collectedNicknames = row.Cells[column.Index].Value.ToString().Split(',');
+                                    //then add them
+                                    foreach (string s in collectedNicknames)
+                                    {
+                                        if (s != "")
+                                            newPlayer.nicknameList.Add(s);
+                                    }
                                 }
                             }
                         }
                     }
-                    if (name != "")
-                        players.Add(new Player(name, nicks));
+                    if (newPlayer.mainName != "")
+                    {
+                        players.Add(newPlayer);
+                    }
                 }
+
+                PostList postList = new PostList(url, startingPostNumber, endingPostNumber);
 
                 //For each post, search the text for votes
                 var voteCount = new VoteCount(players);
@@ -112,6 +118,19 @@ namespace VoteCounter
         private void txtEndingPost_Enter(object sender, EventArgs e)
         {
             txtEndingPost.Clear();
+        }
+
+        private void listPlayers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //cast to DVG
+            var senderGrid = (DataGridView)sender;
+            //if it's in the button column and it's not returning a negative row# for some reason
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
+                e.RowIndex >= 0)
+            {
+                //remove that row
+                listPlayers.Rows.RemoveAt(e.RowIndex);
+            }
         }
     }
 }
