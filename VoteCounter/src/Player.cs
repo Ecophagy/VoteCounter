@@ -8,29 +8,17 @@ namespace VoteCounter
 {
     class Player
     {
-        public int numberOfVotes { get; set; }                                            //number of votes player has
-      //  { get { return this.numberOfVotes; } set { this.numberOfVotes = value; } }                                               
+        public int numberOfVotes { get; set; }                                                            //number of votes player has
+
         public List<string> nicknameList { get; set; }                                                    //all names player goes by. 
-            // { get { return this.nicknameList; } set { this.nicknameList = value; } }                                    
+
         public string mainName { get; set; }                                                               //forum name. 
-              //  { get {return this.mainName; } set {this.mainName = value; } }                                                
-        public DateTime lastPost { get; set; }                                                             //the last day&time this player posted.
-            //   { get {return this.lastPost; } set {this.lastPost = value; } }                                               
 
-        public  Player()
-        {
-            numberOfVotes = 1;
-            mainName = ("Foobar");
-            lastPost = new DateTime();
-        }
+        public DateTime lastPost { get; set; }                                                             //the last day&time this player posted.            
 
-        public Player(Player p)
-            {
-            this.numberOfVotes = p.numberOfVotes;
-            this.mainName = p.mainName;
-            lastPost = p.lastPost;
-            nicknameList = p.nicknameList;
-        }
+        public int numTimesVoted { get; set; }                                                              //tracks the number of votes a player currently has active  
+
+        public List<Player> whoIAmVotingFor { get; set; }                                                   //List whose max size will be numberOfVotes, will use this to track multivotes
 
         public Player(string mainName, int numberOfVotes, List<string> nicknames)
         {
@@ -42,20 +30,16 @@ namespace VoteCounter
 
         //assumes no multivoters. 
         public Player(string mainName, List<string> nicknames)
+            : this(mainName, 1, nicknames)
         {
-            this.numberOfVotes = 1;
-            this.mainName = mainName;
             lastPost = new DateTime();
-            nicknameList = nicknames;
         }
-        
+
         //also assumes no multivoters
-            public Player(string mainName)
+        public Player(string mainName)
+        : this(mainName, 1, new List<string>())
         {
-            this.numberOfVotes = 1;
-            this.mainName = mainName;
             lastPost = new DateTime();
-            nicknameList = new List<string>();
         }
     }
 }
