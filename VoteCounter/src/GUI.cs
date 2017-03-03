@@ -52,8 +52,7 @@ namespace VoteCounter
                             //if under column Nicknames
                             else if (column.Name.Equals("Nicknames"))
                             {
-                                if (row.Cells[column.Index].Value.ToString().Length > 0
-                                    && row.Cells[column.Index].Value != null)
+                                if (row.Cells[column.Index].Value.ToString().Length > 0)
                                 {
                                     //parse the string, seperate each name, then put it in the List
                                     string[] collectedNicknames = row.Cells[column.Index].Value.ToString().Split(',');
