@@ -15,9 +15,12 @@ namespace VoteCounter
         public GUI()
         {
             InitializeComponent();
+            this.listPlayers.Rows.Add();
         }
-
+        
         private static string URL = "http://www.mtgsalvation.com/forums/forum-games/mafia/762585-unreliable-cops-mafia-game-over-mafia-victory";
+
+        
 
         private void btnGenerateVoteCount_Click(object sender, EventArgs e)
         {
@@ -123,13 +126,34 @@ namespace VoteCounter
         {
             //cast to DVG
             var senderGrid = (DataGridView)sender;
-            //if it's in the button column and it's not returning a negative row# for some reason
-            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
-                e.RowIndex >= 0)
+
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn
+                //if it's in the button column and it's not returning a negative row# for some reason
+                && e.RowIndex >= 0
+                //and there's more than one row
+                && senderGrid.Rows.Count > 1)
             {
                 //remove that row
                 listPlayers.Rows.RemoveAt(e.RowIndex);
             }
+        }
+
+        private void AddRow_Click(object sender, EventArgs e)
+        {
+            listPlayers.Rows.Add();
+        }
+
+        private void Clear_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to clear everything?", "Caption?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                foreach (DataGridViewRow row in listPlayers.Rows)
+                {
+                    listPlayers.Rows.Clear();
+                    listPlayers.Rows.Add();
+                }
+            }
+
         }
     }
 }

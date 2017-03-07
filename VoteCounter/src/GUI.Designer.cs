@@ -43,7 +43,11 @@
             this.RemoveRow = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nicknames = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AddRow = new System.Windows.Forms.Button();
+            this.Gridgroup = new System.Windows.Forms.GroupBox();
+            this.Clear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.listPlayers)).BeginInit();
+            this.Gridgroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtGameUrl
@@ -80,9 +84,9 @@
             // btnGenerateVoteCount
             // 
             this.btnGenerateVoteCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.btnGenerateVoteCount.Location = new System.Drawing.Point(455, 93);
+            this.btnGenerateVoteCount.Location = new System.Drawing.Point(455, 159);
             this.btnGenerateVoteCount.Name = "btnGenerateVoteCount";
-            this.btnGenerateVoteCount.Size = new System.Drawing.Size(200, 258);
+            this.btnGenerateVoteCount.Size = new System.Drawing.Size(200, 192);
             this.btnGenerateVoteCount.TabIndex = 3;
             this.btnGenerateVoteCount.Text = "Generate Vote Count!";
             this.btnGenerateVoteCount.UseVisualStyleBackColor = false;
@@ -152,6 +156,7 @@
             // 
             // listPlayers
             // 
+            this.listPlayers.AllowUserToAddRows = false;
             this.listPlayers.AllowUserToResizeColumns = false;
             this.listPlayers.AllowUserToResizeRows = false;
             this.listPlayers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -188,11 +193,44 @@
             this.Nicknames.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Nicknames.Width = 250;
             // 
+            // AddRow
+            // 
+            this.AddRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.AddRow.Location = new System.Drawing.Point(6, 15);
+            this.AddRow.Name = "AddRow";
+            this.AddRow.Size = new System.Drawing.Size(90, 39);
+            this.AddRow.TabIndex = 13;
+            this.AddRow.Text = "More Players!";
+            this.AddRow.UseVisualStyleBackColor = false;
+            this.AddRow.Click += new System.EventHandler(this.AddRow_Click);
+            // 
+            // Gridgroup
+            // 
+            this.Gridgroup.Controls.Add(this.Clear);
+            this.Gridgroup.Controls.Add(this.AddRow);
+            this.Gridgroup.Location = new System.Drawing.Point(455, 93);
+            this.Gridgroup.Name = "Gridgroup";
+            this.Gridgroup.Size = new System.Drawing.Size(200, 60);
+            this.Gridgroup.TabIndex = 14;
+            this.Gridgroup.TabStop = false;
+            this.Gridgroup.Text = "List Controls";
+            // 
+            // Clear
+            // 
+            this.Clear.Location = new System.Drawing.Point(100, 15);
+            this.Clear.Name = "Clear";
+            this.Clear.Size = new System.Drawing.Size(90, 39);
+            this.Clear.TabIndex = 14;
+            this.Clear.Text = "Clear";
+            this.Clear.UseVisualStyleBackColor = true;
+            this.Clear.Click += new System.EventHandler(this.Clear_Click);
+            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(667, 544);
+            this.Controls.Add(this.Gridgroup);
             this.Controls.Add(this.listPlayers);
             this.Controls.Add(this.lblVoteCount);
             this.Controls.Add(this.lblEndPost);
@@ -205,9 +243,10 @@
             this.Controls.Add(this.txtEndingPost);
             this.Controls.Add(this.txtStartingPost);
             this.Controls.Add(this.txtGameUrl);
-         //   this.Name = //"GUI";
+            this.Name = "GUI";
             this.Text = "GUI";
             ((System.ComponentModel.ISupportInitialize)(this.listPlayers)).EndInit();
+            this.Gridgroup.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -230,5 +269,8 @@
         private System.Windows.Forms.DataGridViewButtonColumn RemoveRow;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nicknames;
+        private System.Windows.Forms.Button AddRow;
+        private System.Windows.Forms.GroupBox Gridgroup;
+        private System.Windows.Forms.Button Clear;
     }
 }
