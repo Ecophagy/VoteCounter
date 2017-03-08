@@ -55,9 +55,9 @@
             this.txtGameUrl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtGameUrl.Location = new System.Drawing.Point(68, 24);
+            this.txtGameUrl.Location = new System.Drawing.Point(9, 24);
             this.txtGameUrl.Name = "txtGameUrl";
-            this.txtGameUrl.Size = new System.Drawing.Size(489, 20);
+            this.txtGameUrl.Size = new System.Drawing.Size(595, 20);
             this.txtGameUrl.TabIndex = 8;
             this.txtGameUrl.Tag = "";
             this.txtGameUrl.Text = "Put Link to Game Here...";
@@ -65,7 +65,7 @@
             // 
             // txtStartingPost
             // 
-            this.txtStartingPost.Location = new System.Drawing.Point(455, 67);
+            this.txtStartingPost.Location = new System.Drawing.Point(404, 67);
             this.txtStartingPost.Name = "txtStartingPost";
             this.txtStartingPost.Size = new System.Drawing.Size(91, 20);
             this.txtStartingPost.TabIndex = 1;
@@ -74,9 +74,9 @@
             // 
             // txtEndingPost
             // 
-            this.txtEndingPost.Location = new System.Drawing.Point(555, 67);
+            this.txtEndingPost.Location = new System.Drawing.Point(512, 67);
             this.txtEndingPost.Name = "txtEndingPost";
-            this.txtEndingPost.Size = new System.Drawing.Size(100, 20);
+            this.txtEndingPost.Size = new System.Drawing.Size(92, 20);
             this.txtEndingPost.TabIndex = 2;
             this.txtEndingPost.Text = "Ending Post #";
             this.txtEndingPost.Enter += new System.EventHandler(this.txtEndingPost_Enter);
@@ -84,9 +84,9 @@
             // btnGenerateVoteCount
             // 
             this.btnGenerateVoteCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.btnGenerateVoteCount.Location = new System.Drawing.Point(455, 159);
+            this.btnGenerateVoteCount.Location = new System.Drawing.Point(398, 159);
             this.btnGenerateVoteCount.Name = "btnGenerateVoteCount";
-            this.btnGenerateVoteCount.Size = new System.Drawing.Size(200, 192);
+            this.btnGenerateVoteCount.Size = new System.Drawing.Size(206, 192);
             this.btnGenerateVoteCount.TabIndex = 3;
             this.btnGenerateVoteCount.Text = "Generate Vote Count!";
             this.btnGenerateVoteCount.UseVisualStyleBackColor = false;
@@ -102,17 +102,17 @@
             // 
             // txtVoteCount
             // 
-            this.txtVoteCount.Location = new System.Drawing.Point(68, 370);
+            this.txtVoteCount.Location = new System.Drawing.Point(12, 370);
             this.txtVoteCount.Multiline = true;
             this.txtVoteCount.Name = "txtVoteCount";
             this.txtVoteCount.ReadOnly = true;
-            this.txtVoteCount.Size = new System.Drawing.Size(587, 162);
+            this.txtVoteCount.Size = new System.Drawing.Size(592, 162);
             this.txtVoteCount.TabIndex = 5;
             // 
             // lblGameUrl
             // 
             this.lblGameUrl.AutoSize = true;
-            this.lblGameUrl.Location = new System.Drawing.Point(65, 9);
+            this.lblGameUrl.Location = new System.Drawing.Point(6, 9);
             this.lblGameUrl.Name = "lblGameUrl";
             this.lblGameUrl.Size = new System.Drawing.Size(60, 13);
             this.lblGameUrl.TabIndex = 7;
@@ -121,7 +121,7 @@
             // lblPlayerList
             // 
             this.lblPlayerList.AutoSize = true;
-            this.lblPlayerList.Location = new System.Drawing.Point(68, 51);
+            this.lblPlayerList.Location = new System.Drawing.Point(12, 51);
             this.lblPlayerList.Name = "lblPlayerList";
             this.lblPlayerList.Size = new System.Drawing.Size(55, 13);
             this.lblPlayerList.TabIndex = 8;
@@ -130,7 +130,7 @@
             // lblStartPost
             // 
             this.lblStartPost.AutoSize = true;
-            this.lblStartPost.Location = new System.Drawing.Point(452, 51);
+            this.lblStartPost.Location = new System.Drawing.Point(401, 51);
             this.lblStartPost.Name = "lblStartPost";
             this.lblStartPost.Size = new System.Drawing.Size(63, 13);
             this.lblStartPost.TabIndex = 9;
@@ -139,7 +139,7 @@
             // lblEndPost
             // 
             this.lblEndPost.AutoSize = true;
-            this.lblEndPost.Location = new System.Drawing.Point(552, 51);
+            this.lblEndPost.Location = new System.Drawing.Point(509, 51);
             this.lblEndPost.Name = "lblEndPost";
             this.lblEndPost.Size = new System.Drawing.Size(60, 13);
             this.lblEndPost.TabIndex = 10;
@@ -148,7 +148,7 @@
             // lblVoteCount
             // 
             this.lblVoteCount.AutoSize = true;
-            this.lblVoteCount.Location = new System.Drawing.Point(65, 354);
+            this.lblVoteCount.Location = new System.Drawing.Point(6, 354);
             this.lblVoteCount.Name = "lblVoteCount";
             this.lblVoteCount.Size = new System.Drawing.Size(60, 13);
             this.lblVoteCount.TabIndex = 11;
@@ -164,11 +164,11 @@
             this.RemoveRow,
             this.Name,
             this.Nicknames});
-            this.listPlayers.Location = new System.Drawing.Point(73, 67);
+            this.listPlayers.Location = new System.Drawing.Point(12, 67);
             this.listPlayers.Name = "listPlayers";
             this.listPlayers.RowHeadersVisible = false;
             this.listPlayers.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.listPlayers.Size = new System.Drawing.Size(376, 284);
+            this.listPlayers.Size = new System.Drawing.Size(380, 284);
             this.listPlayers.TabIndex = 12;
             this.listPlayers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listPlayers_CellContentClick);
             // 
@@ -198,7 +198,7 @@
             this.AddRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.AddRow.Location = new System.Drawing.Point(6, 15);
             this.AddRow.Name = "AddRow";
-            this.AddRow.Size = new System.Drawing.Size(90, 39);
+            this.AddRow.Size = new System.Drawing.Size(110, 39);
             this.AddRow.TabIndex = 13;
             this.AddRow.Text = "More Players!";
             this.AddRow.UseVisualStyleBackColor = false;
@@ -208,18 +208,18 @@
             // 
             this.Gridgroup.Controls.Add(this.Clear);
             this.Gridgroup.Controls.Add(this.AddRow);
-            this.Gridgroup.Location = new System.Drawing.Point(455, 93);
+            this.Gridgroup.Location = new System.Drawing.Point(398, 93);
             this.Gridgroup.Name = "Gridgroup";
-            this.Gridgroup.Size = new System.Drawing.Size(200, 60);
+            this.Gridgroup.Size = new System.Drawing.Size(206, 60);
             this.Gridgroup.TabIndex = 14;
             this.Gridgroup.TabStop = false;
             this.Gridgroup.Text = "List Controls";
             // 
             // Clear
             // 
-            this.Clear.Location = new System.Drawing.Point(100, 15);
+            this.Clear.Location = new System.Drawing.Point(122, 15);
             this.Clear.Name = "Clear";
-            this.Clear.Size = new System.Drawing.Size(90, 39);
+            this.Clear.Size = new System.Drawing.Size(78, 39);
             this.Clear.TabIndex = 14;
             this.Clear.Text = "Clear";
             this.Clear.UseVisualStyleBackColor = true;
@@ -229,7 +229,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(667, 544);
+            this.ClientSize = new System.Drawing.Size(616, 544);
             this.Controls.Add(this.Gridgroup);
             this.Controls.Add(this.listPlayers);
             this.Controls.Add(this.lblVoteCount);
@@ -243,7 +243,7 @@
             this.Controls.Add(this.txtEndingPost);
             this.Controls.Add(this.txtStartingPost);
             this.Controls.Add(this.txtGameUrl);
-            this.Name = "GUI";
+         //   this.Name = "GUI";
             this.Text = "GUI";
             ((System.ComponentModel.ISupportInitialize)(this.listPlayers)).EndInit();
             this.Gridgroup.ResumeLayout(false);
