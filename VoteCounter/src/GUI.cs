@@ -122,6 +122,14 @@ namespace VoteCounter
             txtEndingPost.Clear();
         }
 
+        private void listPlayers_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                listPlayers.Rows.Add();
+            }
+        }
+
         private void listPlayers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //cast to DVG
