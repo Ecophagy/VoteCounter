@@ -171,6 +171,7 @@
             this.listPlayers.Size = new System.Drawing.Size(380, 284);
             this.listPlayers.TabIndex = 12;
             this.listPlayers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listPlayers_CellContentClick);
+            this.listPlayers.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.listPlayers_KeyPress);
             // 
             // RemoveRow
             // 
@@ -243,7 +244,6 @@
             this.Controls.Add(this.txtEndingPost);
             this.Controls.Add(this.txtStartingPost);
             this.Controls.Add(this.txtGameUrl);
-         //   this.Name = "GUI";
             this.Text = "GUI";
             ((System.ComponentModel.ISupportInitialize)(this.listPlayers)).EndInit();
             this.Gridgroup.ResumeLayout(false);

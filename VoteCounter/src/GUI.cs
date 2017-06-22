@@ -126,7 +126,16 @@ namespace VoteCounter
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                listPlayers.Rows.Add();
+                //If we're at the end of the list, add the row to the end
+                if (listPlayers.CurrentRow.Index+1 == listPlayers.RowCount)
+                {
+                    listPlayers.Rows.Add();
+                }
+                //Else add the new row beneath the current cell
+                else
+                {
+                    listPlayers.Rows.Insert(listPlayers.CurrentRow.Index);
+                }
             }
         }
 
