@@ -65,6 +65,8 @@
             // 
             // txtStartingPost
             // 
+            this.txtStartingPost.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtStartingPost.Location = new System.Drawing.Point(404, 67);
             this.txtStartingPost.Name = "txtStartingPost";
             this.txtStartingPost.Size = new System.Drawing.Size(91, 20);
@@ -74,6 +76,8 @@
             // 
             // txtEndingPost
             // 
+            this.txtEndingPost.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtEndingPost.Location = new System.Drawing.Point(512, 67);
             this.txtEndingPost.Name = "txtEndingPost";
             this.txtEndingPost.Size = new System.Drawing.Size(92, 20);
@@ -83,6 +87,7 @@
             // 
             // btnGenerateVoteCount
             // 
+            this.btnGenerateVoteCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGenerateVoteCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnGenerateVoteCount.Location = new System.Drawing.Point(398, 159);
             this.btnGenerateVoteCount.Name = "btnGenerateVoteCount";
@@ -102,6 +107,8 @@
             // 
             // txtVoteCount
             // 
+            this.txtVoteCount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtVoteCount.Location = new System.Drawing.Point(12, 370);
             this.txtVoteCount.Multiline = true;
             this.txtVoteCount.Name = "txtVoteCount";
@@ -129,6 +136,8 @@
             // 
             // lblStartPost
             // 
+            this.lblStartPost.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblStartPost.AutoSize = true;
             this.lblStartPost.Location = new System.Drawing.Point(401, 51);
             this.lblStartPost.Name = "lblStartPost";
@@ -138,6 +147,8 @@
             // 
             // lblEndPost
             // 
+            this.lblEndPost.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblEndPost.AutoSize = true;
             this.lblEndPost.Location = new System.Drawing.Point(509, 51);
             this.lblEndPost.Name = "lblEndPost";
@@ -147,6 +158,8 @@
             // 
             // lblVoteCount
             // 
+            this.lblVoteCount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblVoteCount.AutoSize = true;
             this.lblVoteCount.Location = new System.Drawing.Point(6, 354);
             this.lblVoteCount.Name = "lblVoteCount";
@@ -159,6 +172,9 @@
             this.listPlayers.AllowUserToAddRows = false;
             this.listPlayers.AllowUserToResizeColumns = false;
             this.listPlayers.AllowUserToResizeRows = false;
+            this.listPlayers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listPlayers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listPlayers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.RemoveRow,
@@ -175,6 +191,7 @@
             // 
             // AddRow
             // 
+            this.AddRow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.AddRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.AddRow.Location = new System.Drawing.Point(6, 15);
             this.AddRow.Name = "AddRow";
@@ -186,6 +203,7 @@
             // 
             // Gridgroup
             // 
+            this.Gridgroup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Gridgroup.Controls.Add(this.Clear);
             this.Gridgroup.Controls.Add(this.AddRow);
             this.Gridgroup.Location = new System.Drawing.Point(398, 93);
@@ -197,6 +215,7 @@
             // 
             // Clear
             // 
+            this.Clear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Clear.Location = new System.Drawing.Point(122, 15);
             this.Clear.Name = "Clear";
             this.Clear.Size = new System.Drawing.Size(78, 39);
@@ -207,8 +226,10 @@
             // 
             // RemoveRow
             // 
+            this.RemoveRow.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.RemoveRow.HeaderText = "";
             this.RemoveRow.Name = "RemoveRow";
+            this.RemoveRow.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.RemoveRow.Text = "-";
             this.RemoveRow.UseColumnTextForButtonValue = true;
             this.RemoveRow.Width = 25;
@@ -217,15 +238,15 @@
             // 
             this.Names.HeaderText = "Names";
             this.Names.Name = "Names";
-            this.Names.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Names.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // Nicknames
             // 
+            this.Nicknames.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Nicknames.HeaderText = "Nicknames";
             this.Nicknames.Name = "Nicknames";
-            this.Nicknames.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Nicknames.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Nicknames.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Nicknames.Width = 250;
             // 
             // GUI
             // 
