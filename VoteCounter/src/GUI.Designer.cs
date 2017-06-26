@@ -40,12 +40,12 @@
             this.lblEndPost = new System.Windows.Forms.Label();
             this.lblVoteCount = new System.Windows.Forms.Label();
             this.listPlayers = new System.Windows.Forms.DataGridView();
-            this.RemoveRow = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nicknames = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddRow = new System.Windows.Forms.Button();
             this.Gridgroup = new System.Windows.Forms.GroupBox();
             this.Clear = new System.Windows.Forms.Button();
+            this.RemoveRow = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Names = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nicknames = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.listPlayers)).BeginInit();
             this.Gridgroup.SuspendLayout();
             this.SuspendLayout();
@@ -162,7 +162,7 @@
             this.listPlayers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listPlayers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.RemoveRow,
-            this.Name,
+            this.Names,
             this.Nicknames});
             this.listPlayers.Location = new System.Drawing.Point(12, 67);
             this.listPlayers.Name = "listPlayers";
@@ -172,27 +172,6 @@
             this.listPlayers.TabIndex = 12;
             this.listPlayers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listPlayers_CellContentClick);
             this.listPlayers.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.listPlayers_KeyPress);
-            // 
-            // RemoveRow
-            // 
-            this.RemoveRow.HeaderText = "-";
-            this.RemoveRow.Name = "RemoveRow";
-            this.RemoveRow.Text = "-";
-            this.RemoveRow.Width = 25;
-            // 
-            // Name
-            // 
-            this.Name.HeaderText = "Names";
-            this.Name.Name = "Name";
-            this.Name.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Nicknames
-            // 
-            this.Nicknames.HeaderText = "Nicknames";
-            this.Nicknames.Name = "Nicknames";
-            this.Nicknames.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Nicknames.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Nicknames.Width = 250;
             // 
             // AddRow
             // 
@@ -226,6 +205,28 @@
             this.Clear.UseVisualStyleBackColor = true;
             this.Clear.Click += new System.EventHandler(this.Clear_Click);
             // 
+            // RemoveRow
+            // 
+            this.RemoveRow.HeaderText = "";
+            this.RemoveRow.Name = "RemoveRow";
+            this.RemoveRow.Text = "-";
+            this.RemoveRow.UseColumnTextForButtonValue = true;
+            this.RemoveRow.Width = 25;
+            // 
+            // Names
+            // 
+            this.Names.HeaderText = "Names";
+            this.Names.Name = "Names";
+            this.Names.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Nicknames
+            // 
+            this.Nicknames.HeaderText = "Nicknames";
+            this.Nicknames.Name = "Nicknames";
+            this.Nicknames.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Nicknames.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Nicknames.Width = 250;
+            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -244,6 +245,7 @@
             this.Controls.Add(this.txtEndingPost);
             this.Controls.Add(this.txtStartingPost);
             this.Controls.Add(this.txtGameUrl);
+            this.Name = "GUI";
             this.Text = "GUI";
             ((System.ComponentModel.ISupportInitialize)(this.listPlayers)).EndInit();
             this.Gridgroup.ResumeLayout(false);
@@ -266,11 +268,11 @@
         private System.Windows.Forms.Label lblEndPost;
         private System.Windows.Forms.Label lblVoteCount;
         private System.Windows.Forms.DataGridView listPlayers;
-        private System.Windows.Forms.DataGridViewButtonColumn RemoveRow;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nicknames;
         private System.Windows.Forms.Button AddRow;
         private System.Windows.Forms.GroupBox Gridgroup;
         private System.Windows.Forms.Button Clear;
+        private System.Windows.Forms.DataGridViewButtonColumn RemoveRow;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Names;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nicknames;
     }
 }
