@@ -30,50 +30,7 @@ namespace VoteCounter
 
             if (Int32.TryParse(txtStartingPost.Text, out startingPostNumber) && Int32.TryParse(txtEndingPost.Text, out endingPostNumber))
             {
-                //make a List
-                List<Player> players = new List<Player>();
-
-                //set the players
-                foreach (DataGridViewRow row in listPlayers.Rows)
-                {
-                    Player newPlayer = new Player("");
-
-                    foreach (DataGridViewColumn column in listPlayers.Columns)
-                    {
-                        if (row.Cells[column.Index].Value != null)
-                        {
-                            //if under column Names
-                            if (column.Name.Equals("Name"))
-                            {
-                                //if name is valid
-                                if (row.Cells[column.Index].Value.ToString() != ""
-                                    && row.Cells[column.Index].Value != null)
-                                {
-                                    newPlayer.mainName = row.Cells[column.Index].Value.ToString();
-                                }
-                            }
-                            //if under column Nicknames
-                            else if (column.Name.Equals("Nicknames"))
-                            {
-                                if (row.Cells[column.Index].Value.ToString().Length > 0)
-                                {
-                                    //parse the string, seperate each name, then put it in the List
-                                    string[] collectedNicknames = row.Cells[column.Index].Value.ToString().Split(',');
-                                    //then add them
-                                    foreach (string s in collectedNicknames)
-                                    {
-                                        if (s != "")
-                                            newPlayer.nicknameList.Add(s);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    if (newPlayer.mainName != "")
-                    {
-                        players.Add(newPlayer);
-                    }
-                }
+                var players = createPlayerList();
 
                 PostList postList = new PostList(url, startingPostNumber, endingPostNumber);
 
@@ -105,6 +62,38 @@ namespace VoteCounter
             {
                 MessageBox.Show("Invalid Post Numbers!", "VoteCounter", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+        }
+
+        private List<Player> createPlayerList()
+        {
+            List<Player> players = new List<Player>();
+
+            //Populate the player list from the listPlayers table
+            foreach (DataGridViewRow row in listPlayers.Rows)
+            {
+                Player newPlayer = new Player("");
+
+                if (row.Cells["Names"].Value != null)
+                {
+                    newPlayer.mainName = row.Cells["Names"].Value.ToString();
+
+                    if (row.Cells["Nicknames"].Value != null)
+                    {
+                        var nicknames = row.Cells["Nicknames"].Value.ToString().Split(',');
+                        foreach (string nickname in nicknames)
+                        {
+                            if (nickname != "" && nickname != " ")
+                            {
+                                newPlayer.nicknameList.Add(nickname);
+                            }
+                        }
+                    }
+
+                players.Add(newPlayer);    
+                }
+            }
+
+            return players;
         }
 
         private void txtGameUrl_Enter(object sender, EventArgs e)
