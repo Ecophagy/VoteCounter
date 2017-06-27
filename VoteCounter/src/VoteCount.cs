@@ -55,44 +55,20 @@ namespace VoteCounter
                                     System.Text.RegularExpressions.RegexOptions.IgnoreCase);
             if (match.Success)
             {
-                if (isVoteValid(match.Groups[1].Value))
-                {
+                string vote = match.Groups[1].Value;
+                string votee;
 
-                    string foundPlayer = "";
+                //Is the vote for a real votee?
+                if (isVoteValid(vote, out votee))
+                {
                     //Is the poster already voting? If they are, remove their vote
                     if (rawVoteCount.Contains(post.poster))
                     {
                         rawVoteCount.Remove(post.poster);
                     }
 
-                    foreach (Player p in playerList)
-                    {
-                        string toMatch = match.Groups[1].Value;
-                        //check to see if the person the player is voting for is that player's full name
-                        if(String.Compare(p.mainName, toMatch, true) == 0 )
-                        {
-                            foundPlayer = p.mainName;
-                            break;
-                        }
-                        if (p.nicknameList.Count > 0)
-                        {
-                           
-                            for (int i = 0; i < p.nicknameList.Count; i++)
-                            {
-                                //or if it's one of the allowed nicknames
-                                if (String.Compare(p.nicknameList[i], toMatch, true) == 0)
-                                {
-                                    foundPlayer = p.mainName;
-                                    break;
-                                }
-
-                            }
-                        }
-                    }
-                    if (foundPlayer != "")
-                    {
-                        rawVoteCount.Add(post.poster, foundPlayer);
-                    }
+                    //Add the vote to the votecount
+                    rawVoteCount.Add(post.poster, votee);
                 }
                 else
                 {
@@ -102,27 +78,40 @@ namespace VoteCounter
         }
 
 
-        private bool isVoteValid(string vote)
+        private bool isVoteValid(string vote, out string votee)
         {
-            foreach(Player p in playerList)
+            return isVoteeValid(vote, out votee);
+        }
+
+        private bool isVoteeValid(string vote, out string votee)
+        {
+            foreach (Player p in playerList)
             {
                 //check to see if the player being voted for is on the playerlist
                 if (String.Compare(vote, p.mainName, true) == 0)
                 {
+                    votee = p.mainName;
                     return true;
                 }
-                else if (p.nicknameList.Count > 0)
+                else
                 {
-                    for (int i = 0; i < p.nicknameList.Count; i++)
+                    foreach (string nickname in p.nicknameList)
                     {
                         //or if it has a nickname in the list
-                        if (String.Compare(vote, p.nicknameList[i], true) == 0)
+                        if (String.Compare(vote, nickname, true) == 0)
+                        {
+                            votee = p.mainName;
                             return true;
+                        }
+
                     }
                 }
             }
+
+            votee = null;
             return false;
         }
+
 
         //Create a votecount where key is votee and value is list of players voting for that player
         public SortedDictionary<string, List<string>> createVotecount()
