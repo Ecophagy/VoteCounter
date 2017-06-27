@@ -154,23 +154,5 @@ namespace VoteCounter
                 listPlayers.Rows.RemoveAt(e.RowIndex);
             }
         }
-
-        private void AddRow_Click(object sender, EventArgs e)
-        {
-            listPlayers.Rows.Add();
-        }
-
-        private void Clear_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Are you sure you want to clear everything?", "Caption?", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                foreach (DataGridViewRow row in listPlayers.Rows)
-                {
-                    listPlayers.Rows.Clear();
-                    listPlayers.Rows.Add();
-                }
-            }
-
-        }
     }
 }
