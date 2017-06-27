@@ -71,10 +71,9 @@ namespace VoteCounter
             //Populate the player list from the listPlayers table
             foreach (DataGridViewRow row in listPlayers.Rows)
             {
-                Player newPlayer = new Player("");
-
                 if (row.Cells["Names"].Value != null)
                 {
+                    var newPlayer = new Player();
                     newPlayer.mainName = row.Cells["Names"].Value.ToString();
 
                     if (row.Cells["Nicknames"].Value != null)
@@ -88,7 +87,6 @@ namespace VoteCounter
                             }
                         }
                     }
-
                 players.Add(newPlayer);    
                 }
             }
