@@ -107,6 +107,14 @@ namespace VoteCounter
                 }
             }
 
+            //Not voting for a vlaid player, so check for "no lynch" votes
+            if ((new[] { "No Lynch", "NoLynch" }).Contains(vote, StringComparer.OrdinalIgnoreCase))
+            {
+                votee = "No Lynch";
+                return true;
+            }
+
+            //Still no valid vote, so return false
             votee = null;
             return false;
         }
