@@ -226,6 +226,22 @@ namespace VoteCounter
                     listPlayers.Rows[index].Cells["Nicknames"].Value = nicknames.ToString();
                 }
 
+                //Clear any vote count
+                txtVoteCount.Clear();
+            }
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show("Are you sure you want to clear all data and make a new game?", "VoteCounter", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning)==DialogResult.OK)
+            {
+                //Reset the game state
+                txtGameUrl.Clear();
+                txtStartingPost.Clear();
+                txtEndingPost.Clear();
+                listPlayers.Rows.Clear();
+                listPlayers.Rows.Add();
+                txtVoteCount.Clear();
             }
         }
     }
