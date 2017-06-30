@@ -59,7 +59,7 @@ namespace VoteCounter
                 string votee;
 
                 //Is the vote for a real votee?
-                if (isVoteValid(vote, out votee))
+                if (isVoteValid(post.poster, vote, out votee))
                 {
                     //Is the poster already voting? If they are, remove their vote
                     if (rawVoteCount.Contains(post.poster))
@@ -77,10 +77,9 @@ namespace VoteCounter
             }
         }
 
-
-        private bool isVoteValid(string vote, out string votee)
+        private bool isVoteValid(string voter, string vote, out string votee)
         {
-            return isVoteeValid(vote, out votee);
+            return (isVoteeValid(vote, out votee) && isVoterValid(voter));
         }
 
         private bool isVoteeValid(string vote, out string votee)
@@ -109,6 +108,19 @@ namespace VoteCounter
             }
 
             votee = null;
+            return false;
+        }
+
+        private bool isVoterValid(string voter)
+        {
+            //A votee is only valid if they are on the playerlist
+            foreach (Player p in playerList)
+            {
+                if(String.Compare(voter, p.mainName, false) == 0) //Case insensitive because it needs to exactly match MTGS username
+                {
+                    return true;
+                }
+            }
             return false;
         }
 
