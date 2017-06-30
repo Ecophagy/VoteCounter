@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI));
             this.txtGameUrl = new System.Windows.Forms.TextBox();
             this.txtStartingPost = new System.Windows.Forms.TextBox();
             this.txtEndingPost = new System.Windows.Forms.TextBox();
@@ -43,7 +44,17 @@
             this.RemoveRow = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Names = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nicknames = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.listPlayers)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtGameUrl
@@ -51,7 +62,7 @@
             this.txtGameUrl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtGameUrl.Location = new System.Drawing.Point(16, 24);
+            this.txtGameUrl.Location = new System.Drawing.Point(16, 45);
             this.txtGameUrl.Name = "txtGameUrl";
             this.txtGameUrl.Size = new System.Drawing.Size(583, 20);
             this.txtGameUrl.TabIndex = 8;
@@ -62,7 +73,7 @@
             // txtStartingPost
             // 
             this.txtStartingPost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.txtStartingPost.Location = new System.Drawing.Point(176, 52);
+            this.txtStartingPost.Location = new System.Drawing.Point(176, 73);
             this.txtStartingPost.Name = "txtStartingPost";
             this.txtStartingPost.Size = new System.Drawing.Size(91, 20);
             this.txtStartingPost.TabIndex = 1;
@@ -72,7 +83,7 @@
             // txtEndingPost
             // 
             this.txtEndingPost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.txtEndingPost.Location = new System.Drawing.Point(369, 52);
+            this.txtEndingPost.Location = new System.Drawing.Point(369, 73);
             this.txtEndingPost.Name = "txtEndingPost";
             this.txtEndingPost.Size = new System.Drawing.Size(92, 20);
             this.txtEndingPost.TabIndex = 2;
@@ -83,7 +94,7 @@
             // 
             this.btnGenerateVoteCount.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnGenerateVoteCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.btnGenerateVoteCount.Location = new System.Drawing.Point(19, 400);
+            this.btnGenerateVoteCount.Location = new System.Drawing.Point(19, 421);
             this.btnGenerateVoteCount.Name = "btnGenerateVoteCount";
             this.btnGenerateVoteCount.Size = new System.Drawing.Size(580, 73);
             this.btnGenerateVoteCount.TabIndex = 3;
@@ -93,9 +104,9 @@
             // 
             // splitter1
             // 
-            this.splitter1.Location = new System.Drawing.Point(0, 0);
+            this.splitter1.Location = new System.Drawing.Point(0, 24);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 726);
+            this.splitter1.Size = new System.Drawing.Size(3, 702);
             this.splitter1.TabIndex = 6;
             this.splitter1.TabStop = false;
             // 
@@ -103,7 +114,7 @@
             // 
             this.txtVoteCount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtVoteCount.Location = new System.Drawing.Point(19, 504);
+            this.txtVoteCount.Location = new System.Drawing.Point(19, 525);
             this.txtVoteCount.Multiline = true;
             this.txtVoteCount.Name = "txtVoteCount";
             this.txtVoteCount.ReadOnly = true;
@@ -113,7 +124,7 @@
             // lblGameUrl
             // 
             this.lblGameUrl.AutoSize = true;
-            this.lblGameUrl.Location = new System.Drawing.Point(13, 9);
+            this.lblGameUrl.Location = new System.Drawing.Point(13, 30);
             this.lblGameUrl.Name = "lblGameUrl";
             this.lblGameUrl.Size = new System.Drawing.Size(60, 13);
             this.lblGameUrl.TabIndex = 7;
@@ -122,7 +133,7 @@
             // lblPlayerList
             // 
             this.lblPlayerList.AutoSize = true;
-            this.lblPlayerList.Location = new System.Drawing.Point(19, 73);
+            this.lblPlayerList.Location = new System.Drawing.Point(19, 94);
             this.lblPlayerList.Name = "lblPlayerList";
             this.lblPlayerList.Size = new System.Drawing.Size(55, 13);
             this.lblPlayerList.TabIndex = 8;
@@ -132,7 +143,7 @@
             // 
             this.lblStartPost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.lblStartPost.AutoSize = true;
-            this.lblStartPost.Location = new System.Drawing.Point(107, 55);
+            this.lblStartPost.Location = new System.Drawing.Point(107, 76);
             this.lblStartPost.Name = "lblStartPost";
             this.lblStartPost.Size = new System.Drawing.Size(63, 13);
             this.lblStartPost.TabIndex = 9;
@@ -142,7 +153,7 @@
             // 
             this.lblEndPost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.lblEndPost.AutoSize = true;
-            this.lblEndPost.Location = new System.Drawing.Point(303, 55);
+            this.lblEndPost.Location = new System.Drawing.Point(303, 76);
             this.lblEndPost.Name = "lblEndPost";
             this.lblEndPost.Size = new System.Drawing.Size(60, 13);
             this.lblEndPost.TabIndex = 10;
@@ -153,7 +164,7 @@
             this.lblVoteCount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblVoteCount.AutoSize = true;
-            this.lblVoteCount.Location = new System.Drawing.Point(13, 488);
+            this.lblVoteCount.Location = new System.Drawing.Point(13, 509);
             this.lblVoteCount.Name = "lblVoteCount";
             this.lblVoteCount.Size = new System.Drawing.Size(60, 13);
             this.lblVoteCount.TabIndex = 11;
@@ -172,7 +183,7 @@
             this.RemoveRow,
             this.Names,
             this.Nicknames});
-            this.listPlayers.Location = new System.Drawing.Point(19, 89);
+            this.listPlayers.Location = new System.Drawing.Point(19, 110);
             this.listPlayers.Name = "listPlayers";
             this.listPlayers.RowHeadersVisible = false;
             this.listPlayers.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -205,6 +216,80 @@
             this.Nicknames.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Nicknames.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(616, 24);
+            this.menuStrip1.TabIndex = 13;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.openToolStripMenuItem,
+            this.toolStripSeparator,
+            this.saveAsToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "&File";
+            // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripMenuItem.Image")));
+            this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.newToolStripMenuItem.Text = "&New";
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openToolStripMenuItem.Image")));
+            this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.openToolStripMenuItem.Text = "&Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator
+            // 
+            this.toolStripSeparator.Name = "toolStripSeparator";
+            this.toolStripSeparator.Size = new System.Drawing.Size(151, 6);
+            // 
+            // saveAsToolStripMenuItem
+            // 
+            this.saveAsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("saveAsToolStripMenuItem.Image")));
+            this.saveAsToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            this.saveAsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.saveAsToolStripMenuItem.Text = "Save &As";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(151, 6);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.exitToolStripMenuItem.Text = "E&xit";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(151, 6);
+            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -222,9 +307,13 @@
             this.Controls.Add(this.txtEndingPost);
             this.Controls.Add(this.txtStartingPost);
             this.Controls.Add(this.txtGameUrl);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "GUI";
             this.Text = "GUI";
             ((System.ComponentModel.ISupportInitialize)(this.listPlayers)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -247,5 +336,14 @@
         private System.Windows.Forms.DataGridViewButtonColumn RemoveRow;
         private System.Windows.Forms.DataGridViewTextBoxColumn Names;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nicknames;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
+        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }

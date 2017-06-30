@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Web.Script.Serialization;
 
 namespace VoteCounter
 {
@@ -139,6 +140,92 @@ namespace VoteCounter
             {
                 //remove that row
                 listPlayers.Rows.RemoveAt(e.RowIndex);
+            }
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Title = "Save Game State";
+            saveFileDialog.Filter = "Json|*.json";
+
+            if(saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                //Get the start and end post numbers, setting them to 0 if they are unset
+                int StartPost;
+                if (!Int32.TryParse(txtStartingPost.Text, out StartPost))
+                {
+                    StartPost = 0;
+                }
+
+                int EndPost;
+                if (!Int32.TryParse(txtEndingPost.Text, out EndPost))
+                {
+                    EndPost = 0;
+                }
+
+                //Store the game state in an object
+                var state = new GameState
+                {
+                    GameLink = txtGameUrl.Text,
+                    StartPost = StartPost,
+                    EndPost = EndPost,
+                    PlayerList = createPlayerList()
+                };
+
+
+                var json = new JavaScriptSerializer().Serialize(state);
+
+                var file = new System.IO.StreamWriter(saveFileDialog.FileName);
+
+                file.Write(json);
+                file.Close();
+
+                MessageBox.Show("Game Saved!", "VoteCounter", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Load Game";
+            openFileDialog.Filter = "Json|*.json";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                var file = new System.IO.StreamReader(openFileDialog.FileName);
+
+                var json = file.ReadToEnd();
+                file.Close();
+
+                var gameState = new JavaScriptSerializer().Deserialize<GameState>(json);
+
+                txtGameUrl.Text = gameState.GameLink;
+                txtStartingPost.Text = gameState.StartPost.ToString();
+                txtEndingPost.Text = gameState.EndPost.ToString();
+
+                listPlayers.Rows.Clear();
+
+                //Repopulate the player list
+                foreach (Player player in gameState.PlayerList)
+                {
+                    var index = listPlayers.Rows.Add();
+                    listPlayers.Rows[index].Cells["Names"].Value = player.mainName;
+                    var nicknames = new StringBuilder();
+
+                    foreach(string nickname in player.nicknameList)
+                    {
+                        nicknames.Append(nickname);
+                        if (player.nicknameList.IndexOf(nickname) != player.nicknameList.Count - 1)
+                        {
+                            nicknames.Append(",");
+                        }
+                    }
+
+                    listPlayers.Rows[index].Cells["Nicknames"].Value = nicknames.ToString();
+                }
+
             }
         }
     }
