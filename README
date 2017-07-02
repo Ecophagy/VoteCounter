@@ -18,8 +18,6 @@ Future Features:
 -When did everyone last post?
 -Tally posts made by player each day
 -Read for "@MOD" requests
--Player nicknames (to allow more flexibility when voting)
--Save config (game link, start post, playerlist)
 -Save previous votecount & continue from it
 -Votecount formatting options.
 -Multivoters (uh oh)
