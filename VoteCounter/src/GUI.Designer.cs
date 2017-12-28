@@ -68,7 +68,7 @@
             this.txtGameUrl.TabIndex = 8;
             this.txtGameUrl.Tag = "";
             this.txtGameUrl.Text = "Put Link to Game Here...";
-            this.txtGameUrl.Enter += new System.EventHandler(this.txtGameUrl_Enter);
+            this.txtGameUrl.Enter += new System.EventHandler(this.TxtGameUrl_Enter);
             // 
             // txtStartingPost
             // 
@@ -79,7 +79,7 @@
             this.txtStartingPost.Size = new System.Drawing.Size(91, 20);
             this.txtStartingPost.TabIndex = 1;
             this.txtStartingPost.Text = "Starting post #";
-            this.txtStartingPost.Enter += new System.EventHandler(this.txtStartingPost_Enter);
+            this.txtStartingPost.Enter += new System.EventHandler(this.TxtStartingPost_Enter);
             // 
             // txtEndingPost
             // 
@@ -90,7 +90,7 @@
             this.txtEndingPost.Size = new System.Drawing.Size(92, 20);
             this.txtEndingPost.TabIndex = 2;
             this.txtEndingPost.Text = "Ending Post #";
-            this.txtEndingPost.Enter += new System.EventHandler(this.txtEndingPost_Enter);
+            this.txtEndingPost.Enter += new System.EventHandler(this.TxtEndingPost_Enter);
             // 
             // btnGenerateVoteCount
             // 
@@ -103,7 +103,7 @@
             this.btnGenerateVoteCount.TabIndex = 3;
             this.btnGenerateVoteCount.Text = "Generate Vote Count!";
             this.btnGenerateVoteCount.UseVisualStyleBackColor = false;
-            this.btnGenerateVoteCount.Click += new System.EventHandler(this.btnGenerateVoteCount_Click);
+            this.btnGenerateVoteCount.Click += new System.EventHandler(this.BtnGenerateVoteCount_Click);
             // 
             // splitter1
             // 
@@ -194,8 +194,8 @@
             this.listPlayers.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.listPlayers.Size = new System.Drawing.Size(514, 394);
             this.listPlayers.TabIndex = 12;
-            this.listPlayers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listPlayers_CellContentClick);
-            this.listPlayers.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.listPlayers_KeyPress);
+            this.listPlayers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListPlayers_CellContentClick);
+            this.listPlayers.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ListPlayers_KeyPress);
             // 
             // RemoveRow
             // 
@@ -251,7 +251,7 @@
             this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.newToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.newToolStripMenuItem.Text = "&New";
-            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.NewToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -266,7 +266,7 @@
             this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.openToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.openToolStripMenuItem.Text = "&Open";
-            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
             // 
             // toolStripSeparator
             // 
@@ -281,7 +281,7 @@
             this.saveAsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.saveAsToolStripMenuItem.Text = "Save &As";
-            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveAsToolStripMenuItem_Click);
             // 
             // Console
             // 

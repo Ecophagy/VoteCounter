@@ -23,17 +23,15 @@ namespace VoteCounter
             Console.DataSource = logger.LogEntries;
         }
         
-        private void btnGenerateVoteCount_Click(object sender, EventArgs e)
+        private void BtnGenerateVoteCount_Click(object sender, EventArgs e)
         {
             string url = txtGameUrl.Text;
-            int startingPostNumber;
-            int endingPostNumber;
 
-            if (isUrlValid(url))
+            if (IsUrlValid(url))
             {
-                if (Int32.TryParse(txtStartingPost.Text, out startingPostNumber) && Int32.TryParse(txtEndingPost.Text, out endingPostNumber))
+                if (Int32.TryParse(txtStartingPost.Text, out int startingPostNumber) && Int32.TryParse(txtEndingPost.Text, out int endingPostNumber))
                 {
-                    var players = createPlayerList();
+                    var players = CreatePlayerList();
 
                     PostList postList = new PostList(url, startingPostNumber, endingPostNumber);
 
@@ -46,7 +44,7 @@ namespace VoteCounter
                     StringBuilder voteline = new StringBuilder();
 
                     //Print out the votecount!
-                    foreach (KeyValuePair<string, List<string>> kvp in voteCount.createVotecount())
+                    foreach (KeyValuePair<string, List<string>> kvp in voteCount.CreateVotecount())
                     {
                         voteline.Append(kvp.Key + " - " + kvp.Value.Count + " (");
 
@@ -74,7 +72,7 @@ namespace VoteCounter
             }
         }
 
-        private List<Player> createPlayerList()
+        private List<Player> CreatePlayerList()
         {
             List<Player> players = new List<Player>();
 
@@ -83,9 +81,10 @@ namespace VoteCounter
             {
                 if (row.Cells["Names"].Value != null)
                 {
-                    var newPlayer = new Player();
-                    newPlayer.mainName = row.Cells["Names"].Value.ToString();
-
+                    var newPlayer = new Player()
+                    {
+                        MainName = row.Cells["Names"].Value.ToString()
+                    };
                     if (row.Cells["Nicknames"].Value != null)
                     {
                         var nicknames = row.Cells["Nicknames"].Value.ToString().Split(',');
@@ -93,7 +92,7 @@ namespace VoteCounter
                         {
                             if (nickname != "" && nickname != " ")
                             {
-                                newPlayer.nicknameList.Add(nickname);
+                                newPlayer.NicknameList.Add(nickname);
                             }
                         }
                     }
@@ -104,22 +103,22 @@ namespace VoteCounter
             return players;
         }
 
-        private void txtGameUrl_Enter(object sender, EventArgs e)
+        private void TxtGameUrl_Enter(object sender, EventArgs e)
         {
             txtGameUrl.Clear();
         }
 
-        private void txtStartingPost_Enter(object sender, EventArgs e)
+        private void TxtStartingPost_Enter(object sender, EventArgs e)
         {
             txtStartingPost.Clear();
         }
 
-        private void txtEndingPost_Enter(object sender, EventArgs e)
+        private void TxtEndingPost_Enter(object sender, EventArgs e)
         {
             txtEndingPost.Clear();
         }
 
-        private void listPlayers_KeyPress(object sender, KeyPressEventArgs e)
+        private void ListPlayers_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
@@ -136,7 +135,7 @@ namespace VoteCounter
             }
         }
 
-        private void listPlayers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void ListPlayers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //cast to DVG
             var senderGrid = (DataGridView)sender;
@@ -152,28 +151,27 @@ namespace VoteCounter
             }
         }
 
-        private bool isUrlValid(string url)
+        private bool IsUrlValid(string url)
         {
             return (url.Contains("mtgsalvation"));
         }
 
-        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Title = "Save Game State";
-            saveFileDialog.Filter = "Json|*.json";
-
-            if(saveFileDialog.ShowDialog() == DialogResult.OK)
+            var saveFileDialog = new SaveFileDialog()
+            {
+                Title = "Save Game State",
+                Filter = "Json|*.json"
+            };
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 //Get the start and end post numbers, setting them to 0 if they are unset
-                int StartPost;
-                if (!Int32.TryParse(txtStartingPost.Text, out StartPost))
+                if (!Int32.TryParse(txtStartingPost.Text, out int StartPost))
                 {
                     StartPost = 0;
                 }
 
-                int EndPost;
-                if (!Int32.TryParse(txtEndingPost.Text, out EndPost))
+                if (!Int32.TryParse(txtEndingPost.Text, out int EndPost))
                 {
                     EndPost = 0;
                 }
@@ -184,7 +182,7 @@ namespace VoteCounter
                     GameLink = txtGameUrl.Text,
                     StartPost = StartPost,
                     EndPost = EndPost,
-                    PlayerList = createPlayerList()
+                    PlayerList = CreatePlayerList()
                 };
 
 
@@ -200,12 +198,13 @@ namespace VoteCounter
             
         }
 
-        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var openFileDialog = new OpenFileDialog();
-            openFileDialog.Title = "Load Game";
-            openFileDialog.Filter = "Json|*.json";
-
+            var openFileDialog = new OpenFileDialog()
+            {
+                Title = "Load Game",
+                Filter = "Json|*.json"
+            };
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 var file = new System.IO.StreamReader(openFileDialog.FileName);
@@ -225,13 +224,13 @@ namespace VoteCounter
                 foreach (Player player in gameState.PlayerList)
                 {
                     var index = listPlayers.Rows.Add();
-                    listPlayers.Rows[index].Cells["Names"].Value = player.mainName;
+                    listPlayers.Rows[index].Cells["Names"].Value = player.MainName;
                     var nicknames = new StringBuilder();
 
-                    foreach(string nickname in player.nicknameList)
+                    foreach(string nickname in player.NicknameList)
                     {
                         nicknames.Append(nickname);
-                        if (player.nicknameList.IndexOf(nickname) != player.nicknameList.Count - 1)
+                        if (player.NicknameList.IndexOf(nickname) != player.NicknameList.Count - 1)
                         {
                             nicknames.Append(",");
                         }
@@ -245,7 +244,7 @@ namespace VoteCounter
             }
         }
 
-        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        private void NewToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if(MessageBox.Show("Are you sure you want to clear all data and make a new game?", "VoteCounter", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning)==DialogResult.OK)
             {

@@ -9,15 +9,15 @@ namespace VoteCounter
 {
     class VoteCount
     {
-        public System.Collections.Specialized.OrderedDictionary rawVoteCount { get; set; }
+        public System.Collections.Specialized.OrderedDictionary RawVoteCount { get; set; }
 
-        public List<Player> playerList { get; set; }
+        public List<Player> PlayerList { get; set; }
         private Logger logger;
 
         public VoteCount(List<Player> playerList, Logger logger)
         {
-            rawVoteCount = new System.Collections.Specialized.OrderedDictionary();
-            this.playerList = playerList;
+            RawVoteCount = new System.Collections.Specialized.OrderedDictionary();
+            this.PlayerList = playerList;
             this.logger = logger;
         }
 
@@ -25,12 +25,12 @@ namespace VoteCounter
         {
             foreach (Post post in PostList)
             {
-                findUnvotes(post);
-                findVotes(post);
+                FindUnvotes(post);
+                FindVotes(post);
             }
         }
 
-        private void findUnvotes(Post post)
+        private void FindUnvotes(Post post)
         {
             string pattern = "<strong>unvote</strong>";
             System.Text.RegularExpressions.Match match = System.Text.RegularExpressions.Regex.Match(
@@ -40,14 +40,14 @@ namespace VoteCounter
             if (match.Success)
             {
                 //Is the poster already voting? If they are, remove their vote
-                if (rawVoteCount.Contains(post.poster))
+                if (RawVoteCount.Contains(post.poster))
                 {
-                    rawVoteCount.Remove(post.poster);
+                    RawVoteCount.Remove(post.poster);
                 }
             }
         }
 
-        private void findVotes(Post post)
+        private void FindVotes(Post post)
         {
             string pattern = "<strong>(?:unvote[,.]?)? ?vote:? (.+)</strong>";
             System.Text.RegularExpressions.Match match = System.Text.RegularExpressions.Regex.Match(
@@ -58,20 +58,19 @@ namespace VoteCounter
             {
                 string vote = match.Groups[1].Value;
                 string voter = post.poster;
-                string votee;
 
-                if (isVoterValid(voter))
+                if (IsVoterValid(voter))
                 {
-                    if (isVoteeValid(vote, out votee))
+                    if (IsVoteeValid(vote, out string votee))
                     {
                         //Is the poster already voting? If they are, remove their vote
-                        if (rawVoteCount.Contains(voter))
+                        if (RawVoteCount.Contains(voter))
                         {
-                            rawVoteCount.Remove(voter);
+                            RawVoteCount.Remove(voter);
                         }
 
                         //Add the vote to the votecount
-                        rawVoteCount.Add(voter, votee);
+                        RawVoteCount.Add(voter, votee);
 
                         logger.LogVote(post.postNumber, voter, votee);
                     }
@@ -87,24 +86,24 @@ namespace VoteCounter
             }
         }
 
-        private bool isVoteeValid(string vote, out string votee)
+        private bool IsVoteeValid(string vote, out string votee)
         {
-            foreach (Player p in playerList)
+            foreach (Player p in PlayerList)
             {
                 //check to see if the player being voted for is on the playerlist
-                if (String.Compare(vote, p.mainName, true) == 0)
+                if (String.Compare(vote, p.MainName, true) == 0)
                 {
-                    votee = p.mainName;
+                    votee = p.MainName;
                     return true;
                 }
                 else
                 {
-                    foreach (string nickname in p.nicknameList)
+                    foreach (string nickname in p.NicknameList)
                     {
                         //or if it has a nickname in the list
                         if (String.Compare(vote, nickname, true) == 0)
                         {
-                            votee = p.mainName;
+                            votee = p.MainName;
                             return true;
                         }
 
@@ -124,12 +123,12 @@ namespace VoteCounter
             return false;
         }
 
-        private bool isVoterValid(string voter)
+        private bool IsVoterValid(string voter)
         {
             //A votee is only valid if they are on the playerlist
-            foreach (Player p in playerList)
+            foreach (Player p in PlayerList)
             {
-                if(String.Compare(voter, p.mainName, false) == 0) //Case insensitive because it needs to exactly match MTGS username
+                if(String.Compare(voter, p.MainName, false) == 0) //Case insensitive because it needs to exactly match MTGS username
                 {
                     return true;
                 }
@@ -139,10 +138,10 @@ namespace VoteCounter
 
 
         //Create a votecount where key is votee and value is list of players voting for that player
-        public SortedDictionary<string, List<string>> createVotecount()
+        public SortedDictionary<string, List<string>> CreateVotecount()
         {
             var voteCount = new SortedDictionary<string, List<string>>();
-            foreach(DictionaryEntry kvp in rawVoteCount)
+            foreach(DictionaryEntry kvp in RawVoteCount)
             {
                 //If this is the first vote on the votee, add them to the dictionary
                 if(!voteCount.ContainsKey((string)kvp.Value))
@@ -159,11 +158,11 @@ namespace VoteCounter
             List<string> notVoting = new List<string>();
 
             //List Not Voting
-            foreach(Player player in playerList)
+            foreach(Player player in PlayerList)
             {
-                if (!rawVoteCount.Contains(player.mainName))
+                if (!RawVoteCount.Contains(player.MainName))
                 {
-                    notVoting.Add(player.mainName);
+                    notVoting.Add(player.MainName);
                 }
             }
 
