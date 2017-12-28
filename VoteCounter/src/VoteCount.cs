@@ -49,7 +49,7 @@ namespace VoteCounter
 
         private void findVotes(Post post)
         {
-            string pattern = "<strong>(?:unvote,?)? ?vote:? (.+)</strong>";
+            string pattern = "<strong>(?:unvote[,.]?)? ?vote:? (.+)</strong>";
             System.Text.RegularExpressions.Match match = System.Text.RegularExpressions.Regex.Match(
                                     post.text,
                                     pattern,
