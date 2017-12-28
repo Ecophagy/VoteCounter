@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace VoteCounter
 {
@@ -18,7 +14,6 @@ namespace VoteCounter
             NicknameList = new List<string>();
         }
 
- 
         public Player(string mainName, List<string> nicknames)
         {
             this.MainName = mainName;

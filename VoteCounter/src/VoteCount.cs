@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Collections;
 
 namespace VoteCounter
@@ -34,15 +32,15 @@ namespace VoteCounter
         {
             string pattern = "<strong>unvote</strong>";
             System.Text.RegularExpressions.Match match = System.Text.RegularExpressions.Regex.Match(
-                                    post.text,
+                                    post.Text,
                                     pattern,
                                     System.Text.RegularExpressions.RegexOptions.IgnoreCase);
             if (match.Success)
             {
                 //Is the poster already voting? If they are, remove their vote
-                if (RawVoteCount.Contains(post.poster))
+                if (RawVoteCount.Contains(post.Poster))
                 {
-                    RawVoteCount.Remove(post.poster);
+                    RawVoteCount.Remove(post.Poster);
                 }
             }
         }
@@ -51,13 +49,13 @@ namespace VoteCounter
         {
             string pattern = "<strong>(?:unvote[,.]?)? ?vote:? (.+)</strong>";
             System.Text.RegularExpressions.Match match = System.Text.RegularExpressions.Regex.Match(
-                                    post.text,
+                                    post.Text,
                                     pattern,
                                     System.Text.RegularExpressions.RegexOptions.IgnoreCase);
             if (match.Success)
             {
                 string vote = match.Groups[1].Value;
-                string voter = post.poster;
+                string voter = post.Poster;
 
                 if (IsVoterValid(voter))
                 {
@@ -72,16 +70,16 @@ namespace VoteCounter
                         //Add the vote to the votecount
                         RawVoteCount.Add(voter, votee);
 
-                        logger.LogVote(post.postNumber, voter, votee);
+                        logger.LogVote(post.PostNumber, voter, votee);
                     }
                     else
                     {
-                        logger.LogInvalidTarget(post.postNumber, voter, votee);
+                        logger.LogInvalidTarget(post.PostNumber, voter, votee);
                     }
                 }
                 else
                 {
-                    logger.LogInvalidVoter(post.postNumber, voter);
+                    logger.LogInvalidVoter(post.PostNumber, voter);
                 }
             }
         }
@@ -106,7 +104,6 @@ namespace VoteCounter
                             votee = p.MainName;
                             return true;
                         }
-
                     }
                 }
             }

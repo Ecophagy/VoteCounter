@@ -1,26 +1,23 @@
 ﻿using HtmlAgilityPack;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace VoteCounter
 {
     class Post
     {
-        public string poster { get; set; }
-        public uint postNumber { get; set; }
-        public DateTime dateTimePosted { get; set; }
-        public string text { get; set; }
+        public string Poster { get; set; }
+        public uint PostNumber { get; set; }
+        public DateTime DateTimePosted { get; set; }
+        public string Text { get; set; }
 
         public Post(HtmlNode node)
         {
-            this.poster = ExtractUserName(node);
-            this.postNumber = ExtractPostNumber(node);
-            this.dateTimePosted = ExtractDateTimePosted(node);
-            this.text = ExtractPostContent(node);
+            this.Poster = ExtractUserName(node);
+            this.PostNumber = ExtractPostNumber(node);
+            this.DateTimePosted = ExtractDateTimePosted(node);
+            this.Text = ExtractPostContent(node);
         }
 
         private uint ExtractPostNumber(HtmlNode node)
@@ -60,7 +57,5 @@ namespace VoteCounter
             return node.SelectSingleNode(".//div[@class='j-comment-body-container p-comment-body forum-post-body-content']").InnerHtml;
         }
     }
-
-
 }
 
