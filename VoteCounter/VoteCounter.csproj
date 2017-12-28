@@ -67,6 +67,7 @@
       <DependentUpon>GUI.cs</DependentUpon>
     </Compile>
     <Compile Include="src\HTMLParser.cs" />
+    <Compile Include="src\Logger.cs" />
     <Compile Include="src\Player.cs" />
     <Compile Include="src\Post.cs" />
     <Compile Include="src\PostList.cs" />

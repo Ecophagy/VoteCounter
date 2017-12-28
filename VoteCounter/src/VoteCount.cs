@@ -12,11 +12,13 @@ namespace VoteCounter
         public System.Collections.Specialized.OrderedDictionary rawVoteCount { get; set; }
 
         public List<Player> playerList { get; set; }
+        private Logger logger;
 
-        public VoteCount(List<Player> playerList)
+        public VoteCount(List<Player> playerList, Logger logger)
         {
             rawVoteCount = new System.Collections.Specialized.OrderedDictionary();
             this.playerList = playerList;
+            this.logger = logger;
         }
 
         public void FindVotes(List<Post> PostList)
@@ -43,7 +45,6 @@ namespace VoteCounter
                     rawVoteCount.Remove(post.poster);
                 }
             }
-
         }
 
         private void findVotes(Post post)
@@ -56,30 +57,34 @@ namespace VoteCounter
             if (match.Success)
             {
                 string vote = match.Groups[1].Value;
+                string voter = post.poster;
                 string votee;
 
-                //Is the vote for a real votee?
-                if (isVoteValid(post.poster, vote, out votee))
+                if (isVoterValid(voter))
                 {
-                    //Is the poster already voting? If they are, remove their vote
-                    if (rawVoteCount.Contains(post.poster))
+                    if (isVoteeValid(vote, out votee))
                     {
-                        rawVoteCount.Remove(post.poster);
-                    }
+                        //Is the poster already voting? If they are, remove their vote
+                        if (rawVoteCount.Contains(voter))
+                        {
+                            rawVoteCount.Remove(voter);
+                        }
 
-                    //Add the vote to the votecount
-                    rawVoteCount.Add(post.poster, votee);
+                        //Add the vote to the votecount
+                        rawVoteCount.Add(voter, votee);
+
+                        logger.LogVote(post.postNumber, voter, votee);
+                    }
+                    else
+                    {
+                        logger.LogInvalidTarget(post.postNumber, voter, votee);
+                    }
                 }
                 else
                 {
-                    Console.WriteLine("Invalid vote in post #" + post.postNumber);
+                    logger.LogInvalidVoter(post.postNumber, voter);
                 }
             }
-        }
-
-        private bool isVoteValid(string voter, string vote, out string votee)
-        {
-            return (isVoteeValid(vote, out votee) && isVoterValid(voter));
         }
 
         private bool isVoteeValid(string vote, out string votee)
@@ -107,7 +112,7 @@ namespace VoteCounter
                 }
             }
 
-            //Not voting for a vlaid player, so check for "no lynch" votes
+            //Not voting for a valid player, so check for "no lynch" votes
             if ((new[] { "No Lynch", "NoLynch" }).Contains(vote, StringComparer.OrdinalIgnoreCase))
             {
                 votee = "No Lynch";
@@ -115,7 +120,7 @@ namespace VoteCounter
             }
 
             //Still no valid vote, so return false
-            votee = null;
+            votee = vote;
             return false;
         }
 

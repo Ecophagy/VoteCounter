@@ -13,10 +13,14 @@ namespace VoteCounter
 {
     public partial class GUI : Form
     {
+        private Logger logger;
+
         public GUI()
         {
             InitializeComponent();
             this.listPlayers.Rows.Add();
+            logger = new Logger();
+            Console.DataSource = logger.LogEntries;
         }
         
         private void btnGenerateVoteCount_Click(object sender, EventArgs e)
@@ -33,8 +37,10 @@ namespace VoteCounter
 
                     PostList postList = new PostList(url, startingPostNumber, endingPostNumber);
 
+                    logger.ClearLogEntries();
+
                     //For each post, search the text for votes
-                    var voteCount = new VoteCount(players);
+                    var voteCount = new VoteCount(players, logger);
                     voteCount.FindVotes(postList.ListOfPosts);
 
                     StringBuilder voteline = new StringBuilder();
