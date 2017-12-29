@@ -135,9 +135,9 @@ namespace VoteCounter
 
 
         //Create a votecount where key is votee and value is list of players voting for that player
-        public SortedDictionary<string, List<string>> CreateVotecount()
+        public Dictionary<string, List<string>> CreateVotecount()
         {
-            var voteCount = new SortedDictionary<string, List<string>>();
+            var voteCount = new Dictionary<string, List<string>>();
             foreach(DictionaryEntry kvp in RawVoteCount)
             {
                 //If this is the first vote on the votee, add them to the dictionary
@@ -151,10 +151,12 @@ namespace VoteCounter
                     voteCount[(string)kvp.Value].Add((string)kvp.Key);
                 }
             }
+            //Sort the vote count by number of votes each votee has received
+            voteCount = voteCount.OrderByDescending(x => x.Value.Count).ToDictionary(pair => pair.Key, pair => pair.Value);
 
+            //List Not Voting at the bottom of the votecount
             List<string> notVoting = new List<string>();
 
-            //List Not Voting
             foreach(Player player in PlayerList)
             {
                 if (!RawVoteCount.Contains(player.MainName))
@@ -162,10 +164,8 @@ namespace VoteCounter
                     notVoting.Add(player.MainName);
                 }
             }
-
             voteCount.Add("Not Voting", notVoting);
 
-            //TODO: Sort
             return voteCount;
         }
     }
