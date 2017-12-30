@@ -70,8 +70,6 @@ namespace VoteCounter
             {
                 MessageBox.Show("Invalid Game Link!", "VoteCounter", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            return players;
         }
 
         private List<Player> CreatePlayerList()
