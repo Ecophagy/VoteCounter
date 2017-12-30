@@ -289,6 +289,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Console.FormattingEnabled = true;
+            this.Console.HorizontalScrollbar = true;
             this.Console.Location = new System.Drawing.Point(572, 355);
             this.Console.Name = "Console";
             this.Console.Size = new System.Drawing.Size(423, 238);
