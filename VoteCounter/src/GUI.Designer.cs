@@ -94,7 +94,7 @@
             // 
             // btnGenerateVoteCount
             // 
-            this.btnGenerateVoteCount.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnGenerateVoteCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnGenerateVoteCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnGenerateVoteCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGenerateVoteCount.Location = new System.Drawing.Point(19, 522);
