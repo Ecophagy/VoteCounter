@@ -51,6 +51,8 @@
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Console = new System.Windows.Forms.ListBox();
+            this.ConsoleLable = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.listPlayers)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -62,61 +64,64 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtGameUrl.Location = new System.Drawing.Point(16, 45);
             this.txtGameUrl.Name = "txtGameUrl";
-            this.txtGameUrl.Size = new System.Drawing.Size(583, 20);
+            this.txtGameUrl.Size = new System.Drawing.Size(979, 20);
             this.txtGameUrl.TabIndex = 8;
             this.txtGameUrl.Tag = "";
             this.txtGameUrl.Text = "Put Link to Game Here...";
-            this.txtGameUrl.Enter += new System.EventHandler(this.txtGameUrl_Enter);
+            this.txtGameUrl.Enter += new System.EventHandler(this.TxtGameUrl_Enter);
             // 
             // txtStartingPost
             // 
-            this.txtStartingPost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.txtStartingPost.Location = new System.Drawing.Point(176, 73);
+            this.txtStartingPost.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtStartingPost.Location = new System.Drawing.Point(185, 71);
             this.txtStartingPost.Name = "txtStartingPost";
             this.txtStartingPost.Size = new System.Drawing.Size(91, 20);
             this.txtStartingPost.TabIndex = 1;
             this.txtStartingPost.Text = "Starting post #";
-            this.txtStartingPost.Enter += new System.EventHandler(this.txtStartingPost_Enter);
+            this.txtStartingPost.Enter += new System.EventHandler(this.TxtStartingPost_Enter);
             // 
             // txtEndingPost
             // 
-            this.txtEndingPost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.txtEndingPost.Location = new System.Drawing.Point(369, 73);
+            this.txtEndingPost.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtEndingPost.Location = new System.Drawing.Point(356, 71);
             this.txtEndingPost.Name = "txtEndingPost";
             this.txtEndingPost.Size = new System.Drawing.Size(92, 20);
             this.txtEndingPost.TabIndex = 2;
             this.txtEndingPost.Text = "Ending Post #";
-            this.txtEndingPost.Enter += new System.EventHandler(this.txtEndingPost_Enter);
+            this.txtEndingPost.Enter += new System.EventHandler(this.TxtEndingPost_Enter);
             // 
             // btnGenerateVoteCount
             // 
-            this.btnGenerateVoteCount.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnGenerateVoteCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnGenerateVoteCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.btnGenerateVoteCount.Location = new System.Drawing.Point(19, 421);
+            this.btnGenerateVoteCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerateVoteCount.Location = new System.Drawing.Point(19, 522);
             this.btnGenerateVoteCount.Name = "btnGenerateVoteCount";
-            this.btnGenerateVoteCount.Size = new System.Drawing.Size(580, 73);
+            this.btnGenerateVoteCount.Size = new System.Drawing.Size(514, 73);
             this.btnGenerateVoteCount.TabIndex = 3;
             this.btnGenerateVoteCount.Text = "Generate Vote Count!";
             this.btnGenerateVoteCount.UseVisualStyleBackColor = false;
-            this.btnGenerateVoteCount.Click += new System.EventHandler(this.btnGenerateVoteCount_Click);
+            this.btnGenerateVoteCount.Click += new System.EventHandler(this.BtnGenerateVoteCount_Click);
             // 
             // splitter1
             // 
             this.splitter1.Location = new System.Drawing.Point(0, 24);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 702);
+            this.splitter1.Size = new System.Drawing.Size(3, 593);
             this.splitter1.TabIndex = 6;
             this.splitter1.TabStop = false;
             // 
             // txtVoteCount
             // 
-            this.txtVoteCount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtVoteCount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtVoteCount.Location = new System.Drawing.Point(19, 525);
+            this.txtVoteCount.Location = new System.Drawing.Point(572, 110);
             this.txtVoteCount.Multiline = true;
             this.txtVoteCount.Name = "txtVoteCount";
             this.txtVoteCount.ReadOnly = true;
-            this.txtVoteCount.Size = new System.Drawing.Size(580, 191);
+            this.txtVoteCount.Size = new System.Drawing.Size(423, 226);
             this.txtVoteCount.TabIndex = 5;
             // 
             // lblGameUrl
@@ -139,9 +144,10 @@
             // 
             // lblStartPost
             // 
-            this.lblStartPost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lblStartPost.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.lblStartPost.AutoSize = true;
-            this.lblStartPost.Location = new System.Drawing.Point(107, 76);
+            this.lblStartPost.Location = new System.Drawing.Point(116, 74);
             this.lblStartPost.Name = "lblStartPost";
             this.lblStartPost.Size = new System.Drawing.Size(63, 13);
             this.lblStartPost.TabIndex = 9;
@@ -149,9 +155,10 @@
             // 
             // lblEndPost
             // 
-            this.lblEndPost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lblEndPost.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.lblEndPost.AutoSize = true;
-            this.lblEndPost.Location = new System.Drawing.Point(303, 76);
+            this.lblEndPost.Location = new System.Drawing.Point(290, 74);
             this.lblEndPost.Name = "lblEndPost";
             this.lblEndPost.Size = new System.Drawing.Size(60, 13);
             this.lblEndPost.TabIndex = 10;
@@ -159,10 +166,11 @@
             // 
             // lblVoteCount
             // 
-            this.lblVoteCount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblVoteCount.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblVoteCount.AutoSize = true;
-            this.lblVoteCount.Location = new System.Drawing.Point(13, 509);
+            this.lblVoteCount.Location = new System.Drawing.Point(569, 94);
             this.lblVoteCount.Name = "lblVoteCount";
             this.lblVoteCount.Size = new System.Drawing.Size(60, 13);
             this.lblVoteCount.TabIndex = 11;
@@ -173,9 +181,8 @@
             this.listPlayers.AllowUserToAddRows = false;
             this.listPlayers.AllowUserToResizeColumns = false;
             this.listPlayers.AllowUserToResizeRows = false;
-            this.listPlayers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listPlayers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.listPlayers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listPlayers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.RemoveRow,
@@ -185,10 +192,10 @@
             this.listPlayers.Name = "listPlayers";
             this.listPlayers.RowHeadersVisible = false;
             this.listPlayers.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.listPlayers.Size = new System.Drawing.Size(580, 292);
+            this.listPlayers.Size = new System.Drawing.Size(514, 394);
             this.listPlayers.TabIndex = 12;
-            this.listPlayers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listPlayers_CellContentClick);
-            this.listPlayers.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.listPlayers_KeyPress);
+            this.listPlayers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListPlayers_CellContentClick);
+            this.listPlayers.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ListPlayers_KeyPress);
             // 
             // RemoveRow
             // 
@@ -220,7 +227,7 @@
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(616, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1012, 24);
             this.menuStrip1.TabIndex = 13;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -244,7 +251,7 @@
             this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.newToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.newToolStripMenuItem.Text = "&New";
-            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.NewToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -259,7 +266,7 @@
             this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.openToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.openToolStripMenuItem.Text = "&Open";
-            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
             // 
             // toolStripSeparator
             // 
@@ -274,13 +281,39 @@
             this.saveAsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.saveAsToolStripMenuItem.Text = "Save &As";
-            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveAsToolStripMenuItem_Click);
+            // 
+            // Console
+            // 
+            this.Console.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Console.FormattingEnabled = true;
+            this.Console.HorizontalScrollbar = true;
+            this.Console.Location = new System.Drawing.Point(572, 355);
+            this.Console.Name = "Console";
+            this.Console.Size = new System.Drawing.Size(423, 238);
+            this.Console.TabIndex = 14;
+            // 
+            // ConsoleLable
+            // 
+            this.ConsoleLable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ConsoleLable.AutoSize = true;
+            this.ConsoleLable.Location = new System.Drawing.Point(569, 339);
+            this.ConsoleLable.Name = "ConsoleLable";
+            this.ConsoleLable.Size = new System.Drawing.Size(45, 13);
+            this.ConsoleLable.TabIndex = 15;
+            this.ConsoleLable.Text = "Console";
             // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(616, 726);
+            this.ClientSize = new System.Drawing.Size(1012, 617);
+            this.Controls.Add(this.ConsoleLable);
+            this.Controls.Add(this.Console);
             this.Controls.Add(this.listPlayers);
             this.Controls.Add(this.lblVoteCount);
             this.Controls.Add(this.lblEndPost);
@@ -329,5 +362,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ListBox Console;
+        private System.Windows.Forms.Label ConsoleLable;
     }
 }

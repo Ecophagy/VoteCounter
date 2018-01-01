@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 
-
 namespace VoteCounter
 {
     class GameState
@@ -10,5 +9,4 @@ namespace VoteCounter
         public int EndPost { get; set; }
         public List<Player> PlayerList { get; set; }
     }
-
 }

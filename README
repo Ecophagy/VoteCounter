@@ -10,15 +10,3 @@ Players can only be voted for using the exact name that appears in the playerlis
 Unvotes stand alone (not "unvote:player X")
 A player cannot vote and then unvote that vote in the same post (we look for unvotes before vote)
 Multiple votes must be made in different sets of bold tags
-
-Future Features:
--Console to output errors/invalid votes
--Handling Replacements
--When did everyone last post?
--Tally posts made by player each day
--Read for "@MOD" requests
--Save previous votecount & continue from it
--Votecount formatting options.
--Multivoters (uh oh)
--Online hosting + web GUI
--Perhaps use something more distinct than bold tags (like ##VOTE:)

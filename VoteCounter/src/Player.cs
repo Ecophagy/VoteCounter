@@ -1,28 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace VoteCounter
 {
     class Player
     {
-        public List<string> nicknameList { get; set; }                                                    //all names player goes by. 
+        public List<string> NicknameList { get; set; }                                                    //all names player goes by. 
 
-        public string mainName { get; set; }                                                              //forum name. 
+        public string MainName { get; set; }                                                              //forum name. 
 
         public Player()
         {
-            mainName = "";
-            nicknameList = new List<string>();
+            MainName = "";
+            NicknameList = new List<string>();
         }
 
- 
         public Player(string mainName, List<string> nicknames)
         {
-            this.mainName = mainName;
-            this.nicknameList = nicknames;
+            this.MainName = mainName;
+            this.NicknameList = nicknames;
         }
 
     }
