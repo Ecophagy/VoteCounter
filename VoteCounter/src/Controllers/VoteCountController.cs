@@ -8,7 +8,7 @@ namespace VoteCounter.src.Controllers
 {
     class VoteCountController
     {
-        public VoteCount generateVoteCount(String url, int startingPostNumber, int endingPostNumber, List<Player> players)
+        public VoteCount generateVoteCount(string url, int startingPostNumber, int endingPostNumber, List<Player> players)
         {
             var logger = new LogController();
 
@@ -23,7 +23,7 @@ namespace VoteCounter.src.Controllers
             return voteCount;
         }
 
-        public String FormatVoteCount(VoteCount voteCount)
+        public string FormatVoteCount(VoteCount voteCount)
         {
             StringBuilder voteText = new StringBuilder();
 
