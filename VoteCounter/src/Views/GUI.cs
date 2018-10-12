@@ -22,8 +22,9 @@ namespace VoteCounter
         private void BtnGenerateVoteCount_Click(object sender, EventArgs e)
         {
             string url = txtGameUrl.Text;
+            var urlController = new UrlController();
 
-            if (IsUrlValid(url))
+            if (urlController.ValidateUrl(url))
             {
                 if (Int32.TryParse(txtStartingPost.Text, out int startingPostNumber) && Int32.TryParse(txtEndingPost.Text, out int endingPostNumber))
                 {
@@ -119,11 +120,6 @@ namespace VoteCounter
                 //remove that row
                 listPlayers.Rows.RemoveAt(e.RowIndex);
             }
-        }
-
-        private bool IsUrlValid(string url)
-        {
-            return (url.Contains("mtgsalvation"));
         }
 
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
