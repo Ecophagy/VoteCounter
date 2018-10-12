@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
 using System.Web.Script.Serialization;
+using VoteCounter.src.Controllers;
 
 namespace VoteCounter
 {
     public partial class GUI : Form
     {
-        private Logger logger;
+        private LogController logger;
 
         public GUI()
         {
             InitializeComponent();
             this.listPlayers.Rows.Add();
-            logger = new Logger();
+            logger = new LogController();
             Console.DataSource = logger.LogEntries;
         }
         
@@ -26,35 +27,9 @@ namespace VoteCounter
             {
                 if (Int32.TryParse(txtStartingPost.Text, out int startingPostNumber) && Int32.TryParse(txtEndingPost.Text, out int endingPostNumber))
                 {
-                    var players = CreatePlayerList();
-
-                    PostList postList = new PostList(url, startingPostNumber, endingPostNumber);
-
-                    logger.ClearLogEntries();
-
-                    //For each post, search the text for votes
-                    var voteCount = new VoteCount(players, logger);
-                    voteCount.FindVotes(postList.ListOfPosts);
-
-                    StringBuilder voteline = new StringBuilder();
-
-                    //Print out the votecount!
-                    foreach (KeyValuePair<string, List<string>> kvp in voteCount.CreateVotecount())
-                    {
-                        voteline.Append(kvp.Key + " - " + kvp.Value.Count + " (");
-
-                        foreach (string voter in kvp.Value)
-                        {
-                            voteline.Append(voter);
-                            if (kvp.Value.IndexOf(voter) != kvp.Value.Count - 1)
-                            {
-                                voteline.Append(", ");
-                            }
-                        }
-                        voteline.AppendLine(")");
-                    }
-
-                    txtVoteCount.Text = voteline.ToString();
+                    var voteCountController = new VoteCountController();
+                    var voteCount = voteCountController.generateVoteCount(url, startingPostNumber, endingPostNumber, CreatePlayerList());
+                    txtVoteCount.Text = voteCountController.FormatVoteCount(voteCount);
                 }
                 else
                 {
@@ -180,13 +155,8 @@ namespace VoteCounter
                     PlayerList = CreatePlayerList()
                 };
 
-
-                var json = new JavaScriptSerializer().Serialize(state);
-
-                var file = new System.IO.StreamWriter(saveFileDialog.FileName);
-
-                file.Write(json);
-                file.Close();
+                var saveLoadController = new SaveLoadController();
+                saveLoadController.SaveGame(saveFileDialog.FileName, state);
 
                 MessageBox.Show("Game Saved!", "VoteCounter", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
@@ -202,12 +172,8 @@ namespace VoteCounter
             };
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                var file = new System.IO.StreamReader(openFileDialog.FileName);
-
-                var json = file.ReadToEnd();
-                file.Close();
-
-                var gameState = new JavaScriptSerializer().Deserialize<GameState>(json);
+                var saveLoadController = new SaveLoadController();
+                var gameState = saveLoadController.LoadGame(openFileDialog.FileName);
 
                 txtGameUrl.Text = gameState.GameLink;
                 txtStartingPost.Text = gameState.StartPost.ToString();

@@ -10,9 +10,9 @@ namespace VoteCounter
         public System.Collections.Specialized.OrderedDictionary RawVoteCount { get; set; }
 
         public List<Player> PlayerList { get; set; }
-        private Logger logger;
+        private LogController logger;
 
-        public VoteCount(List<Player> playerList, Logger logger)
+        public VoteCount(List<Player> playerList, LogController logger)
         {
             RawVoteCount = new System.Collections.Specialized.OrderedDictionary();
             this.PlayerList = playerList;

@@ -2,11 +2,11 @@
 
 namespace VoteCounter
 {
-    class Logger
+    class LogController
     {
         public BindingList<string> LogEntries { get; set; }
 
-        public Logger()
+        public LogController()
         {
             LogEntries = new BindingList<string>();
         }
