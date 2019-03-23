@@ -8,22 +8,22 @@ namespace VoteCounter.src.Controllers
 {
     class VoteCountController
     {
-        public VoteCount generateVoteCount(string url, int startingPostNumber, int endingPostNumber, List<Player> players)
+        public VoteCountBuilder generateVoteCount(string url, int startingPostNumber, int endingPostNumber, List<Player> players)
         {
             var logger = new LogController();
 
             logger.ClearLogEntries();
 
-            var postList = new PostList(url, startingPostNumber, endingPostNumber);
+            var postList = new PostListBuilder(url, startingPostNumber, endingPostNumber);
 
             //For each post, search the text for votes
-            var voteCount = new VoteCount(players, logger);
+            var voteCount = new VoteCountBuilder(players, logger);
             voteCount.FindVotes(postList.ListOfPosts);
 
             return voteCount;
         }
 
-        public string FormatVoteCount(VoteCount voteCount)
+        public string FormatVoteCount(VoteCountBuilder voteCount)
         {
             StringBuilder voteText = new StringBuilder();
 

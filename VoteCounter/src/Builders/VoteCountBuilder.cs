@@ -5,14 +5,14 @@ using System.Collections;
 
 namespace VoteCounter
 {
-    class VoteCount
+    class VoteCountBuilder
     {
         public System.Collections.Specialized.OrderedDictionary RawVoteCount { get; set; }
 
         public List<Player> PlayerList { get; set; }
         private LogController logger;
 
-        public VoteCount(List<Player> playerList, LogController logger)
+        public VoteCountBuilder(List<Player> playerList, LogController logger)
         {
             RawVoteCount = new System.Collections.Specialized.OrderedDictionary();
             this.PlayerList = playerList;

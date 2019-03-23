@@ -22,7 +22,7 @@ namespace VoteCounter
         private void BtnGenerateVoteCount_Click(object sender, EventArgs e)
         {
             string url = txtGameUrl.Text;
-            var urlController = new UrlController();
+            var urlController = new UrlValidator();
 
             if (urlController.ValidateUrl(url))
             {
