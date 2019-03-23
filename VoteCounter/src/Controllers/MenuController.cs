@@ -9,19 +9,20 @@ namespace VoteCounter.src.Controllers
         {
             var json = new JavaScriptSerializer().Serialize(state);
 
-            var file = new System.IO.StreamWriter(fileName);
-
-            file.Write(json);
-            file.Close();
+            using (var file = new System.IO.StreamWriter(fileName))
+            {
+                file.Write(json);
+                file.Close();
+            }
         }
 
         public GameState LoadGame(string fileName)
         {
-            var file = new System.IO.StreamReader(fileName);
-
-            var json = file.ReadToEnd();
-            file.Close();
-
+            string json;
+            using (var file = new System.IO.StreamReader(fileName))
+            {
+                json = file.ReadToEnd();
+            }
             return new JavaScriptSerializer().Deserialize<GameState>(json);
         }
     }

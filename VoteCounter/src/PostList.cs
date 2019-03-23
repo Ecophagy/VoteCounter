@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace VoteCounter
 {
+    
     class PostList
     {
         public List<Post> ListOfPosts { get; }
@@ -22,15 +23,17 @@ namespace VoteCounter
                 var nodes = parser.getListofHtmlPosts();
 
                 //Convert each HTML post construct to a post object and add them to a list
+
                 foreach (HtmlNode node in nodes)
                 {
                     Post post = new Post(node);
-                    if (post.PostNumber >= startingPostNumber && post.PostNumber <= endingPostNumber)
+                    if (post.postNumber >= startingPostNumber && post.postNumber <= endingPostNumber)
                     {
                         ListOfPosts.Add(post);
                     }
                 }
             }
         }
+
     }
 }
